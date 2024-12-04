@@ -26,7 +26,14 @@ class SidebarController extends PlatformController
                 'icon' => 'bi bi-star',
                 'title' => $this->translator->trans('aside.favourites'),
                 'route' => 'admin_v1_dashboard',
-                'children' => []
+                'children' => [
+                    'intranet' => [
+                        'icon' => 'bi bi-info-circle',
+                        'title' => 'Intranet',
+                        'route' => 'admin_v1_dashboard',
+                        'children' => []
+                    ],
+                ]
             ],
             'erp' => [
                 'icon' => '',
