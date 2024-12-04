@@ -34,7 +34,13 @@
                         <tr>
                             <td>{{ loop.index }}.</td>
                             {% for thKey, thValue in tableHead %}
-                                <td>{{ attribute(td, thKey) }}</td>
+                                <td>
+                                    {% if attribute(td, thKey) is same as(true) or attribute(td, thKey) is same as(false) %}
+                                        {{ attribute(td, thKey) ? '&#9989;' : '&#10060;' }}
+                                    {% else %}
+                                        {{ attribute(td, thKey) }}
+                                    {% endif %}
+                                </td>
                             {% endfor %}
                             <td><a href="#{{ td.id}}">-</a></td>
                         </tr>

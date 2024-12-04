@@ -3,8 +3,7 @@
 namespace App\Controller\Platform\Backend;
 
 use App\Controller\Platform\PlatformController;
-use App\Repository\UserRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\Platform\UserRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

@@ -2,7 +2,7 @@
 
 namespace App\Entity\Platform;
 
-use App\Repository\InstanceRepository;
+use App\Repository\Platform\InstanceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;

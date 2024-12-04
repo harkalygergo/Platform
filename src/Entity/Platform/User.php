@@ -2,7 +2,7 @@
 
 namespace App\Entity\Platform;
 
-use App\Repository\UserRepository;
+use App\Repository\Platform\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
