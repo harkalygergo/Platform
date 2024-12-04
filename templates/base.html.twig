@@ -2,11 +2,13 @@
 <html lang="{{ app.request.locale }}" data-bs-theme="auto">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Platform{% endblock %}</title>
+        <title>{% block title %}PLATFORM{% endblock %}</title>
+
+        <link rel="shortcut icon" href="/assets/img/stack-platform-icon-bootstrap-icon.png">
+        <link rel="stylesheet" type="text/css" href="https://cdn.brandcomstudio.com/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.brandcomstudio.com/vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
 
         {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="https://cdn.brandcomstudio.com/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-            <link rel="stylesheet" type="text/css" href="https://cdn.brandcomstudio.com/vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
         {% endblock %}
 
         {% block head %}{% endblock %}

@@ -1,3 +1,7 @@
 aside:
     dashboard: 'Dashboard'
     favourites: 'Favorites'
+    settings: 'Settings'
+    logout: 'Logout'
+    users: 'Users'
+

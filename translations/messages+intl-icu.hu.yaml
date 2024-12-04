@@ -1,3 +1,6 @@
 aside:
     dashboard: 'Vezérlőpult'
     favourites: 'Kedvencek'
+    settings: 'Beállítások'
+    logout: 'Kijelentkezés'
+    users: 'Felhasználók'

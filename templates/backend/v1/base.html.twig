@@ -1,4 +1,99 @@
 {% extends 'base.html.twig' %}
 
 {% block head %}
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        hr {
+            border-top: 1px solid gray;
+        }
+
+        .bi {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        /*
+         * Sidebar
+         */
+
+        @media (min-width: 768px) {
+            .sidebar .offcanvas-lg {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 48px;
+            }
+            .navbar-search {
+                display: block;
+            }
+        }
+
+        .sidebar .nav-link {
+            font-size: .875rem;
+            font-weight: 500;
+        }
+
+        .sidebar .nav-link.active {
+            color: #2470dc;
+        }
+
+        .sidebar-heading {
+            font-size: .75rem;
+        }
+
+        /*
+         * Navbar
+         */
+
+        .navbar-brand {
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            background-color: rgba(0, 0, 0, .25);
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+        }
+
+        .navbar .form-control {
+            padding: .75rem 1rem;
+        }
+    </style>
 {% endblock %}
+
+{% block body %}
+
+    <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Company name</a>
+
+        <ul class="navbar-nav flex-row d-md-none">
+            <li class="nav-item text-nowrap">
+                <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
+                    <svg class="bi"><use xlink:href="#search"/></svg>
+                </button>
+            </li>
+            <li class="nav-item text-nowrap">
+                <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="bi"><use xlink:href="#list"/></svg>
+                </button>
+            </li>
+        </ul>
+
+        <div id="navbarSearch" class="navbar-search w-100 collapse">
+            <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {% include 'backend/v1/sidebar.html.twig' %}
+
+            {% block main %}
+            {% endblock %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
