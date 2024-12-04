@@ -1,7 +1,9 @@
 # Platform
-###### Version: 2024.12.04.4
+###### Version: 2024.12.04.5
 
 Platform is a multisite and multilingual compatibility Management System based on Symfony PHP Framework. It's ideal for managing and growing any organization. Free and open-source and always will be.
+
+---
 
 ## How to install?
 
@@ -14,3 +16,22 @@ Platform is a multisite and multilingual compatibility Management System based o
 - Update NPM dependencies with npm install command
 - Build assets with npm run build command
 - Update Webpack Encore with npm run encore production command
+
+---
+
+## Documentation
+
+### Developer Book
+
+Platform based on:
+
+- latest Symfony PHP Framework (https://symfony.com)
+- latest Twig template engine (https://twig.symfony.com/)
+- latest Bootstrap (https://getbootstrap.com)
+- latest chart.js (https://www.chartjs.org/)
+
+---
+
+## Copyright
+
+Platform made with 💚 in Hungary by Gergő Harkály (https://www.harkalygergo.hu).
