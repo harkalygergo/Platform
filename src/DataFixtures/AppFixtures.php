@@ -20,15 +20,83 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        $this->loadInstances($manager);
         $this->loadUsers($manager);
 
 
         $manager->flush();
     }
 
+    private function loadInstances($manager)
+    {
+        $instances = [
+            [
+                'name' => 'Harkály Gergő',
+                'status' => 1,
+            ],
+            [
+                'name' => 'ASK-NET',
+                'status' => 1,
+            ],
+            [
+                'name' => 'Dr. Képes Ildikó',
+                'status' => 1,
+            ],
+            [
+                'name' => 'Hunflex',
+                'status' => 1,
+            ],
+        ];
+
+        foreach ($instances as $instance) {
+            $newInstance = new Instance();
+            $newInstance->setName($instance['name']);
+            $newInstance->setStatus($instance['status']);
+            $manager->persist($newInstance);
+        }
+    }
+
     private function loadUsers($manager)
     {
         $users = [
+            [
+                'namePrefix' => '',
+                'firstName' => 'Gergő',
+                'middleName' => '',
+                'lastName' => 'Harkály',
+                'nickName' => 'harkalygergo',
+                'phone' => '+36706081384',
+                'email' => 'platform@harkalygergo.hu',
+                'services' => [
+                    [
+                        'name' => 'tárhely 5 GB',
+                        'description' => '',
+                        'annualFee' => 0,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                    [
+                        'name' => 'harkalygergo.hu domain név',
+                        'description' => '',
+                        'annualFee' => 0,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                    [
+                        'name' => 'harkaly.eu domain név',
+                        'description' => '',
+                        'annualFee' => 0,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                ]
+            ],
             [
                 'namePrefix' => '',
                 'firstName' => 'Csaba',
@@ -39,7 +107,7 @@ class AppFixtures extends Fixture
                 'email' => 'ask-net@gmail.hu',
                 'services' => [
                     [
-                        'name' => 'ask-net.hu domain név',
+                        'name' => 'tárhely 5 GB',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -48,7 +116,7 @@ class AppFixtures extends Fixture
                         'status' => 1,
                     ],
                     [
-                        'name' => 'ask-net.hu tárhely',
+                        'name' => 'ask-net.hu domain név',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -68,7 +136,7 @@ class AppFixtures extends Fixture
                 'email' => 'drkepesildiko@gmail.com',
                 'services' => [
                     [
-                        'name' => 'bogacsigyogycentrum.hu domain név',
+                        'name' => 'tárhely 5 GB',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -77,7 +145,7 @@ class AppFixtures extends Fixture
                         'status' => 1,
                     ],
                     [
-                        'name' => 'bogacsigyogycentrum.hu tárhely',
+                        'name' => 'bogacsigyogycentrum.hu domain név',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -94,17 +162,7 @@ class AppFixtures extends Fixture
                         'frequencyOfPayment' => $this->translator->trans('payment.annual'),
                         'status' => 1,
                     ],
-                    [
-                        'name' => 'vitalitashaz.hu tárhely',
-                        'description' => '',
-                        'annualFee' => 0,
-                        'currency' => 'HUF',
-                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
-                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
-                        'status' => 1,
-                    ],
                 ]
-
             ],
             [
                 'namePrefix' => 'Id.',
@@ -112,8 +170,55 @@ class AppFixtures extends Fixture
                 'middleName' => '',
                 'lastName' => 'Tóth',
                 'nickName' => '',
-                'phone' => '+36302188190',
-                'email' => 'drkepesildiko@gmail.com',
+                'phone' => '+36703185810',
+                'email' => 'j.toth@hunflex.hu',
+                'services' => [
+                    [
+                        'name' => 'tárhely 5 GB',
+                        'description' => '',
+                        'annualFee' => 0,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                    [
+                        'name' => 'hollandmunkak.hu domain név',
+                        'description' => '',
+                        'annualFee' => 0,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                    [
+                        'name' => 'hunflex.hu domain név',
+                        'description' => '',
+                        'annualFee' => 3000,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                    [
+                        'name' => 'hunflex.nl domain név',
+                        'description' => '',
+                        'annualFee' => 6000,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                    [
+                        'name' => 'flex-go.eu domain név',
+                        'description' => '',
+                        'annualFee' => 4000,
+                        'currency' => 'HUF',
+                        'nextPaymentDate' => new \DateTimeImmutable('2024-12-01'),
+                        'frequencyOfPayment' => $this->translator->trans('payment.annual'),
+                        'status' => 1,
+                    ],
+                ]
             ],
         ];
         foreach ($users as $user) {
@@ -128,15 +233,19 @@ class AppFixtures extends Fixture
             $newUser->setPassword($user['email']);
             $newUser->setStatus(1);
             $manager->persist($newUser);
+
+            // get new user id
+            $newUserId = $newUser->getId();
+            $this->loadServices($manager, $newUserId, $user['services']);
         }
     }
 
-    private function loadServices($manager)
+    private function loadServices($manager, $newUserId, $userServices)
     {
         $services = [
             [
                 'name' => 'Platform alapszolgáltatás',
-                'description' => 'Tartalmazza a platform alapvető szolgáltatásait: egy domain név, 1 GB tárhely, SSL tanúsítvány, korlátlan e-mail fiók és alias, 1 GB e-mail fiók tárhely, rendszeres biztonsági mentések, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.',
+                'description' => 'Tartalmazza a platform alapvető szolgáltatásait: egy domain név, korlátlan aldomain, 5 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.',
                 'annualFee' => 30000,
                 'currency' => 'HUF',
                 'frequencyOfPayment' => $this->translator->trans('payment.annual'),
@@ -144,6 +253,11 @@ class AppFixtures extends Fixture
                 'status' => 1,
             ],
         ];
+
+        // add user services to $services
+        foreach ($userServices as $userService) {
+            $services[] = $userService;
+        }
 
         foreach ($services as $service) {
             $newService = new Service();

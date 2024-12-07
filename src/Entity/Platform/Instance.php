@@ -15,8 +15,12 @@ class Instance
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $title = null;
+    private ?string $name = null;
+
+    #[ORM\Column(length: 8)]
+    private int $status = 0;
 
     #[ORM\Column(nullable: true)]
     private ?int $owner = null;
@@ -29,9 +33,6 @@ class Instance
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     private $updatedAt;
-
-    #[ORM\Column(length: 8)]
-    private int $status = 0;
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'instances')]
     private Collection $users;
@@ -48,14 +49,14 @@ class Instance
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(?string $title): static
+    public function setName(string $name): static
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }

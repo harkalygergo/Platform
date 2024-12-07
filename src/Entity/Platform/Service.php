@@ -35,7 +35,7 @@ class Service
     #[ORM\Column(type: Types::BOOLEAN, nullable: false, options: ['default' => 1])]
     private ?bool $status = null;
 
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: false, options: ['default' => 'CURRENT_TIMESTAMP'])]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true, options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
