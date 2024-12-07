@@ -1,3 +1,5 @@
+payment:
+    yearly: yearly
 aside:
     dashboard: 'Dashboard'
     favourites: 'Favorites'
