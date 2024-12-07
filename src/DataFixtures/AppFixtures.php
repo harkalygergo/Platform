@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Platform\BillingProfile;
 use App\Entity\Platform\Instance;
 use App\Entity\Platform\Service;
 use App\Entity\Platform\User;
@@ -53,6 +54,35 @@ class AppFixtures extends Fixture
             $newInstance->setName($instance['name']);
             $newInstance->setStatus($instance['status']);
             $manager->persist($newInstance);
+        }
+    }
+
+    private function loadBillingProfiles($manager)
+    {
+        // Read CSV file content
+        $csvFile = __DIR__ . '/billing-profiles.csv';
+        $csvContent = file_get_contents($csvFile);
+
+        // Convert CSV content to an array
+        $rows = array_map('str_getcsv', explode("\n", $csvContent));
+        $header = array_shift($rows);
+
+        // Loop through the array and create BillingProfile entities
+        foreach ($rows as $row) {
+            if (count($row) < count($header)) {
+                continue; // Skip incomplete rows
+            }
+
+            $billingProfileData = array_combine($header, $row);
+            $newBillingProfile = new BillingProfile();
+            $newBillingProfile->setName($billingProfileData['name']);
+            $newBillingProfile->setZip((int)$billingProfileData['zip']);
+            $newBillingProfile->setSettlement($billingProfileData['settlement']);
+            $newBillingProfile->setAddress($billingProfileData['address']);
+            $newBillingProfile->setVat($billingProfileData['vat']);
+            $newBillingProfile->setEuVat($billingProfileData['euVat']);
+            $newBillingProfile->setEmail($billingProfileData['email']);
+            $manager->persist($newBillingProfile);
         }
     }
 
