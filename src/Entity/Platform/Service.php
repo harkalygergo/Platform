@@ -29,7 +29,7 @@ class Service
     #[ORM\Column(length: 16, nullable: true)]
     private ?string $frequencyOfPayment = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
     private ?\DateTimeInterface $nextPaymentDate = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: false, options: ['default' => 1])]
