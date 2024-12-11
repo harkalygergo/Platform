@@ -3,6 +3,7 @@
 namespace App\Controller\Platform\Backend;
 
 use App\Controller\Platform\PlatformController;
+use App\Repository\Platform\ServiceRepository;
 use App\Repository\Platform\UserRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,31 @@ class BackendController extends PlatformController
     #[Route('/{_locale}/admin/v1/dashboard', name: 'admin_v1_dashboard')]
     public function index(): Response
     {
-        return $this->render('backend/v1/list.html.twig', [
+        return $this->render('platform/backend/v1/list.html.twig', [
+            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'title' => 'Szolgáltatások',
+            'tableHead' => [
+                'name' => 'Megnevezés',
+                'type' => 'Típus',
+                'fee' => 'Díj',
+                'currency' => 'Pénznem',
+                'frequencyOfPayment' => 'Fizetési gyakoriság',
+                //'nextPaymentDate' => 'Következő fizetési dátum',
+                'status' => 'Státusz',
+            ],
+            'tableBody' => (new ServiceRepository($this->doctrine))->findAll(),
+            'actions' => [
+                'view',
+                'edit',
+                'delete',
+            ],
+        ]);
+    }
+
+    #[Route('/{_locale}/admin/v1/users', name: 'admin_v1_users')]
+    public function users(): Response
+    {
+        return $this->render('platform/backend/v1/list.html.twig', [
             'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
             'title' => $this->translator->trans('aside.users'),
             'tableHead' => [

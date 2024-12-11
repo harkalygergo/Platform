@@ -3,7 +3,6 @@
 namespace App\Controller\Platform\Frontend;
 
 use App\Controller\Platform\PlatformController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,14 +13,22 @@ class LoginController extends PlatformController
     #[Route('/wp-admin', name: 'honeypot_wp_admin')]
     #[Route('/administrator', name: 'honeypot_administrator')]
     #[Route('/login', name: 'honeypot_login')]
-    public function honeypot(): RedirectResponse
+    public function honeypot(): Response
     {
-        return $this->redirect('https://www.google.com');
+        $environment = $this->getPlatformBasicEnviroments();
+
+        return $this->render('platform/frontend/restricted.html.twig', $environment);
     }
 
-    #[Route('/admin/v1', name: 'login')]
+    #[Route('/{_locale}/admin', name: 'login')]
     public function index(Request $request): Response
     {
+        // if i is a posted request, redirect to the dashboard
+        if ($request->isMethod('POST')) {
+            dump($request->isMethod('POST'));
+            return $this->redirectToRoute('admin_v1_dashboard');
+        }
+
         if ($this->getUser()) {
             return $this->redirectToRoute('admin_v1_dashboard');
         }
@@ -31,6 +38,6 @@ class LoginController extends PlatformController
             return $this->redirectToRoute('admin_v1_dashboard');
         }
 
-        return $this->render('frontend/login.html.twig');
+        return $this->render('platform/frontend/login.html.twig');
     }
 }

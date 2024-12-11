@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-lg bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-5">
+
+                                <h2 class="fw-bold mb-2 text-uppercase"><i class="bi bi-stack"></i> Platform</h2>
+                                <p class="text-white-50 mb-5">Business Management System</p>
+                                <form name="form" method="post">
+                                    <div class="text-start">
+                                        <div id="form">
+                                            <div>
+                                                <label for="form_username" class="required">Azonosító</label>
+                                                <input type="text" id="form_username" name="form[username]" required="required" class="form-control form-control-lg bg-dark text-white" />
+                                            </div>
+                                            <div>
+                                                <label for="form_password" class="required">Jelszó</label>
+                                                <input type="password" id="form_password" name="form[password]" required="required" class="form-control form-control-lg bg-dark text-white" />
+                                            </div>
+                                            <div>
+                                                <label for="form_language" class="required">Nyelv</label>
+                                                <select id="form_language" name="form[language]" class="form-control form-control-lg bg-dark text-white">
+                                                    <option value="en">english</option>
+                                                    <option value="hu" selected="selected">magyar</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="form__remember_me">Maradjak bejelentkezve</label>
+                                                <input type="checkbox" id="form__remember_me" name="form[_remember_me]" class="form-check-input bg-dark text-white" value="1" />
+                                            </div>
+                                            <div>
+                                                <button type="submit" id="form_submit" name="form[submit]" class="btn btn-outline-light btn-lg px-5 my-3">
+                                                    Bejelentkezés
+                                                </button>
+                                            </div>
+                                            <input type="hidden" id="form__token" name="form[_token]" value="04afe8aafa8bfd7464b26341433dc00b.P6vrt6epU8RVMMUSiZxG4kz7087tYSPtYboywNqKVxU.Bvqqmun4fp0EQYpBws8VtiPLv52YUXrVKJdks4LbA2xL6aOElcs4kxxFqg" />
+                                        </div>
+                                    </div>
+                                </form>
+                                <!--form method="post" action="/hu">
+                                    <div class="text-start">
+                                        <div class="form-outline form-white mb-4">
+                                            <label class="form-label" for="username"><i class="bi bi-person"></i> Azonosító</label>
+                                            <input type="text" id="username" name="_username" class="form-control form-control-lg bg-dark text-white" />
+                                        </div>
+
+                                        <div class="form-outline form-white mb-4">
+                                            <label class="form-label" for="password"><i class="bi bi-lock"></i> Jelszó</label>
+                                            <input type="password" id="password" name="password" class="form-control form-control-lg bg-dark text-white" />
+                                        </div>
+
+                                        <div class="form-outline form-white mb-4 form-group">
+                                            <label for="languageSelector"><i class="bi bi-translate"></i> Nyelv</label>
+                                            <select class="form-control form-control-lg bg-dark text-white" id="languageSelector">
+                                                <option>english</option>
+                                                <option>magyar</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-outline form-white mb-4 form-check">
+                                            <input class="form-check-input bg-dark text-white" type="checkbox" value="" id="keepLoggedIn">
+                                            <label class="form-check-label" for="keepLoggedIn">
+                                                Maradjak bejelentkezve
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Bejelentkezés <i class="bi bi-box-arrow-in-right"></i></button>
+                                </form-->
+
+                                <p class="small mt-5"><a class="text-white-50" href="#!">Elfelejtett jelszó</a></p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

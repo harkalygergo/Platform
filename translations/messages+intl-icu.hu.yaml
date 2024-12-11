@@ -1,3 +1,15 @@
+action:
+    view: megtekintés
+    edit: szerkesztés
+    delete: törlés
+    save: mentés
+    cancel: megszakítás
+    create: létrehozás
+    update: frissítés
+    back: vissza
+date:
+    createdAt: 'Létrehozva'
+    updatedAt: 'Frissítve'
 payment:
     yearly: éves
 aside:
@@ -6,3 +18,4 @@ aside:
     settings: 'Beállítások'
     logout: 'Kijelentkezés'
     users: 'Felhasználók'
+    
