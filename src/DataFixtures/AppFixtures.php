@@ -8,22 +8,25 @@ use App\Entity\Platform\Service;
 use App\Entity\Platform\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class AppFixtures extends Fixture
 {
     private TranslatorInterface $translator;
+    private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, UserPasswordHasherInterface $passwordHasher)
     {
         $this->translator = $translator;
+        $this->passwordHasher = $passwordHasher;
     }
 
     public function load(ObjectManager $manager): void
     {
+        $this->loadBillingProfiles($manager);
         $this->loadInstances($manager);
         $this->loadUsers($manager);
-
 
         $manager->flush();
     }
@@ -104,6 +107,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -113,6 +117,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'harkalygergo.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -122,6 +127,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'harkaly.eu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -131,6 +137,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'brandcom.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -140,6 +147,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'brandcomstudio.com domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -149,6 +157,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'biecoshop.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -158,6 +167,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'diateka.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -167,6 +177,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'webcard.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -176,6 +187,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'webcard.cz domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -185,6 +197,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'varosinfo.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -194,6 +207,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'telepulesinfo.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -203,6 +217,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'infopedia.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -212,6 +227,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'futoblog.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -221,6 +237,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'sportnagykovet.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -241,6 +258,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -250,6 +268,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'ask-net.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -270,6 +289,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -279,6 +299,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'bogacsigyogycentrum.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -288,6 +309,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'vitalitashaz.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -308,6 +330,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -317,6 +340,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'nagydrotfono.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -337,6 +361,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -346,6 +371,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'digimuhely.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -355,6 +381,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'helloled.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -364,6 +391,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'beolina.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 3000,
                         'currency' => 'HUF',
@@ -373,6 +401,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'freyadance.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 3000,
                         'currency' => 'HUF',
@@ -393,6 +422,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -402,6 +432,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'mocorgo.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -417,11 +448,12 @@ class AppFixtures extends Fixture
                 'middleName' => '',
                 'lastName' => 'Herczeg',
                 'nickName' => '',
-                'phone' => '',
+                'phone' => '+36309994427',
                 'email' => 'herczegsuzig@gmail.com',
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -431,6 +463,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'izuletmuhely.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -446,11 +479,12 @@ class AppFixtures extends Fixture
                 'middleName' => '',
                 'lastName' => 'Novotta',
                 'nickName' => '',
-                'phone' => '',
+                'phone' => '+36208031739',
                 'email' => 'novi.peter@gmail.com',
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -460,6 +494,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'margaretaapartman.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -469,6 +504,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'margaretahotel.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -478,6 +514,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'bogacshotel.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 3000,
                         'currency' => 'HUF',
@@ -493,11 +530,12 @@ class AppFixtures extends Fixture
                 'middleName' => '',
                 'lastName' => 'Tili',
                 'nickName' => '',
-                'phone' => '',
+                'phone' => '+36302262032',
                 'email' => 'ferenc@tili.hu',
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -507,6 +545,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'autoalkatresz.bolt.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -516,6 +555,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'tili.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -525,6 +565,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'etautosbolt.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 3000,
                         'currency' => 'HUF',
@@ -545,6 +586,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -554,6 +596,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'hollandmunkak.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -563,6 +606,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'hunflex.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -572,6 +616,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'hunflex.nl domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 6000,
                         'currency' => 'HUF',
@@ -581,6 +626,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'flex-go.eu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 4000,
                         'currency' => 'HUF',
@@ -590,6 +636,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'alfaflex.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 3000,
                         'currency' => 'HUF',
@@ -610,6 +657,7 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -619,6 +667,7 @@ class AppFixtures extends Fixture
                     ],
                     [
                         'name' => 'joetaxi.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
@@ -639,19 +688,21 @@ class AppFixtures extends Fixture
                 'services' => [
                     [
                         'name' => 'tárhely 10 GB',
+                        'type' => 'hosting',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
-                        'nextPaymentDate' => new \DateTimeImmutable('2025-12-01 00:00:00'),
+                        'nextPaymentDate' => new \DateTimeImmutable('2025-12-01'),
                         'frequencyOfPayment' => $this->translator->trans('payment.annual'),
                         'status' => 1,
                     ],
                     [
                         'name' => 'valhallacalling.hu domain név',
+                        'type' => 'domain',
                         'description' => '',
                         'annualFee' => 0,
                         'currency' => 'HUF',
-                        'nextPaymentDate' => new \DateTimeImmutable('2025-12-01 00:00:00'),
+                        'nextPaymentDate' => new \DateTimeImmutable('2025-12-01'),
                         'frequencyOfPayment' => $this->translator->trans('payment.annual'),
                         'status' => 1,
                     ],
@@ -667,7 +718,8 @@ class AppFixtures extends Fixture
             $newUser->setNickName($user['nickName']);
             $newUser->setPhone($user['phone']);
             $newUser->setEmail($user['email']);
-            $newUser->setPassword($user['email']);
+            //$newUser->setPassword($this->passwordHasher->hashPassword($newUser, $user['email']));
+            $newUser->setPassword(password_hash($user['email'], PASSWORD_DEFAULT));
             $newUser->setStatus(1);
             $manager->persist($newUser);
 
@@ -682,6 +734,7 @@ class AppFixtures extends Fixture
         $services = [
             [
                 'name' => 'Platform alapszolgáltatás',
+                'type' => 'basic',
                 'description' => 'Tartalmazza a platform alapvető szolgáltatásait: 2 domain név, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.',
                 'annualFee' => 30000,
                 'currency' => 'HUF',
@@ -700,6 +753,11 @@ class AppFixtures extends Fixture
             $newService = new Service();
             $newService->setName($service['name']);
             $newService->setDescription($service['description']);
+            $newService->setType($service['type']);
+            $newService->setFee($service['annualFee']);
+            $newService->setCurrency($service['currency']);
+            $newService->setFrequencyOfPayment($service['frequencyOfPayment']);
+            $newService->setNextPaymentDate($service['nextPaymentDate']);
             $newService->setStatus($service['status']);
             $manager->persist($newService);
         }

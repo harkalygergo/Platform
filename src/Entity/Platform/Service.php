@@ -17,6 +17,9 @@ class Service
     #[ORM\Column(length: 64)]
     private ?string $name = null;
 
+    #[ORM\Column(length: 32, nullable: true, options: ['default' => 'domain'])]
+    private ?string $type = null;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
@@ -29,7 +32,8 @@ class Service
     #[ORM\Column(length: 16, nullable: true)]
     private ?string $frequencyOfPayment = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
+    // add $nextPaymentDate as a DATE type column
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $nextPaymentDate = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: false, options: ['default' => 1])]
@@ -40,6 +44,11 @@ class Service
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -54,6 +63,18 @@ class Service
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }
