@@ -51,7 +51,35 @@ class AppFixtures extends Fixture
                 'status' => 1,
             ],
             [
+                'name' => 'Nagy Drótfonó',
+                'status' => 1,
+            ],
+            [
+                'name' => 'Digiműhely',
+                'status' => 1,
+            ],
+            [
+                'name' => 'Mocorgó',
+                'status' => 1,
+            ],
+            [
+                'name' => 'ET Autósbolt',
+                'status' => 1,
+            ],
+            [
+                'name' => 'Herczeg Família',
+                'status' => 1,
+            ],
+            [
+                'name' => 'Margaréta Apartman',
+                'status' => 1,
+            ],
+            [
                 'name' => 'Hunflex',
+                'status' => 1,
+            ],
+            [
+                'name' => 'Valhalla Calling',
                 'status' => 1,
             ],
         ];
