@@ -57,6 +57,13 @@ class User
     #[ORM\ManyToMany(targetEntity: Instance::class, mappedBy: 'users')]
     private Collection $instances;
 
+    /**
+     * @var Collection<int, Instance>
+     */
+    #[ORM\OneToMany(targetEntity: Instance::class, mappedBy: 'instance', orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\OrderBy(['publishedAt' => 'DESC'])]
+    private Collection $ownInstances;
+
     public function __construct()
     {
         $this->instances = new ArrayCollection();
@@ -255,5 +262,15 @@ class User
     public function setDefaultInstance($instance): void
     {
         $this->instances->add($instance);
+    }
+
+    public function getOwnInstances(): Collection
+    {
+        return $this->ownInstances;
+    }
+
+    public function setOwnInstances(Collection $ownInstances): void
+    {
+        $this->ownInstances = $ownInstances;
     }
 }

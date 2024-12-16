@@ -8,13 +8,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PlatformController extends AbstractController
 {
-    private ?string $clientIP = null;
     public function __construct(
         protected RequestStack $requestStack,
         protected \Doctrine\Persistence\ManagerRegistry $doctrine,
         protected TranslatorInterface $translator
     ) {
-        $this->clientIP = $this->requestStack->getCurrentRequest()->getClientIp();
     }
 
     public function getPlatformBasicEnviroments()

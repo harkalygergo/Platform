@@ -22,9 +22,6 @@ class Instance
     #[ORM\Column(length: 8)]
     private int $status = 0;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $owner = null;
-
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $intranet = null;
 
@@ -36,6 +33,17 @@ class Instance
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'instances')]
     private Collection $users;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'ownInstances')]
+    #[ORM\JoinColumn(nullable: true, options: ['default' => null])]
+    private ?User $owner = null;
+
+    /**
+     * @var Collection<int, Service>
+     */
+    #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'service', orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\OrderBy(['publishedAt' => 'DESC'])]
+    private Collection $services;
 
     public function __construct()
     {
@@ -68,18 +76,6 @@ class Instance
     public function setIntranet(?string $intranet): static
     {
         $this->intranet = $intranet;
-
-        return $this;
-    }
-
-    public function getOwner(): ?int
-    {
-        return $this->owner;
-    }
-
-    public function setOwner(?int $owner): static
-    {
-        $this->owner = $owner;
 
         return $this;
     }
@@ -148,5 +144,25 @@ class Instance
         }
 
         return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): void
+    {
+        $this->owner = $owner;
+    }
+
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    public function setServices(Collection $services): void
+    {
+        $this->services = $services;
     }
 }

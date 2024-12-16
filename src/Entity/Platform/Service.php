@@ -14,6 +14,10 @@ class Service
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\ManyToOne(targetEntity: Instance::class, inversedBy: 'services')]
+    #[ORM\JoinColumn(nullable: true, options: ['default' => null])]
+    private ?Instance $instance = null;
+
     #[ORM\Column(length: 64)]
     private ?string $name = null;
 
@@ -45,6 +49,9 @@ class Service
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $deletedAt = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -54,6 +61,17 @@ class Service
     {
         return $this->id;
     }
+
+    public function getInstance(): ?Instance
+    {
+        return $this->instance;
+    }
+
+    public function setInstance(?Instance $instance): void
+    {
+        $this->instance = $instance;
+    }
+
 
     public function getName(): ?string
     {
@@ -174,4 +192,17 @@ class Service
 
         return $this;
     }
+
+    public function getDeletedAt(): ?\DateTimeImmutable
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeImmutable $deletedAt): static
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
 }

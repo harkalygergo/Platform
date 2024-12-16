@@ -11,7 +11,7 @@ date:
     createdAt: 'Létrehozva'
     updatedAt: 'Frissítve'
 payment:
-    yearly: éves
+    annual: éves
 aside:
     dashboard: 'Vezérlőpult'
     favourites: 'Kedvencek'
