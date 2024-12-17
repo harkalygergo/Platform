@@ -3,12 +3,15 @@
 namespace App\Controller\Platform\Frontend;
 
 use App\Controller\Platform\PlatformController;
+use App\Entity\Platform\User;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends PlatformController
 {
+    #[Route('/', name: 'honeypot')]
     #[Route('/admin', name: 'honeypot_admin')]
     #[Route('/wp-admin', name: 'honeypot_wp_admin')]
     #[Route('/administrator', name: 'honeypot_administrator')]
@@ -21,12 +24,27 @@ class LoginController extends PlatformController
     }
 
     #[Route('/{_locale}/admin', name: 'login')]
-    public function index(Request $request): Response
+    public function index(Request $request, Security $security): Response
     {
+        //dump($_POST);
+        //dd($request->getMethod());
         // if i is a posted request, redirect to the dashboard
         if ($request->isMethod('POST')) {
-            dump($request->isMethod('POST'));
-            return $this->redirectToRoute('admin_v1_dashboard');
+            $postedData = $request->request->all();
+            $username = $postedData['username'];
+            // check in users table if the username exists as email
+            $userRepo = $this->doctrine->getRepository(User::class);
+            $user = $userRepo->findOneBy(['email' => $username]);
+            if ($user) {
+                // check if the password is correct
+                $password = $postedData['password'];
+                if (password_verify($password, $user->getPassword())) {
+                    // if the password is correct, redirect to the dashboard
+                    $security->login($user, 'form_login', 'main');
+
+                    return $this->redirectToRoute('admin_v1_dashboard');
+                }
+            }
         }
 
         if ($this->getUser()) {
