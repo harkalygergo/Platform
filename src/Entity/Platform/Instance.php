@@ -42,13 +42,14 @@ class Instance
      * @var Collection<int, Service>
      */
     #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'service', orphanRemoval: true, cascade: ['persist'])]
-    #[ORM\OrderBy(['publishedAt' => 'DESC'])]
+    #[ORM\OrderBy(['createdAt' => 'DESC'])]
     private Collection $services;
 
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->users = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int

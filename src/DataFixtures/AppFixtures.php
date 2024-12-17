@@ -112,8 +112,8 @@ class AppFixtures extends Fixture
             if ($data['instance']) {
                 $instanceRepository = $manager->getRepository(Instance::class);
                 $instance = $instanceRepository->findOneBy(['name' => $data['instance']]);
-                $service->setInstance($instance);
             }
+            $service->setInstance($instance);
             $service->setName($data['name']);
             $service->setDescription($data['description']);
             $service->setFee($data['fee']);

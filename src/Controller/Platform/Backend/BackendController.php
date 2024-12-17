@@ -20,6 +20,9 @@ class BackendController extends PlatformController
     #[Route('/{_locale}/admin/v1/dashboard', name: 'admin_v1_dashboard')]
     public function index(): Response
     {
+        $instance = $this->getUser()->getInstances()->first();
+        $services = (new ServiceRepository($this->doctrine))->findBy(['instance' => $instance]);
+
         return $this->render('platform/backend/v1/list.html.twig', [
             'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
             'title' => 'Szolgáltatások',
@@ -32,7 +35,8 @@ class BackendController extends PlatformController
                 //'nextPaymentDate' => 'Következő fizetési dátum',
                 'status' => 'Státusz',
             ],
-            'tableBody' => (new ServiceRepository($this->doctrine))->findAll(),
+            //'tableBody' => (new ServiceRepository($this->doctrine))->findAll(),
+            'tableBody' => $services,
             'actions' => [
                 'view',
                 'edit',
