@@ -2,6 +2,7 @@
 
 namespace App\Entity\Platform;
 
+use App\Entity\Order;
 use App\Repository\Platform\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -74,9 +75,16 @@ class User implements UserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Cart $cart = null;
 
+    /**
+     * @var Collection<int, Order>
+     */
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'createdBy')]
+    private Collection $orders;
+
     public function __construct()
     {
         $this->instances = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -337,6 +345,36 @@ class User implements UserInterface
     public function setCart(?Cart $cart): static
     {
         $this->cart = $cart;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Order>
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): static
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders->add($order);
+            $order->setCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): static
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getCreatedBy() === $this) {
+                $order->setCreatedBy(null);
+            }
+        }
 
         return $this;
     }

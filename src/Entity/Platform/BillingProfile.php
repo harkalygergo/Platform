@@ -2,6 +2,7 @@
 
 namespace App\Entity\Platform;
 
+use App\Entity\Order;
 use App\Repository\Platform\BillingProfileRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -40,9 +41,16 @@ class BillingProfile
     #[ORM\ManyToMany(targetEntity: Instance::class, mappedBy: 'billingProfiles')]
     private Collection $instances;
 
+    /**
+     * @var Collection<int, Order>
+     */
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'billingProfile')]
+    private Collection $orders;
+
     public function __construct()
     {
         $this->instances = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -151,6 +159,36 @@ class BillingProfile
     public function removeInstance(Instance $instance): static
     {
         $this->instances->removeElement($instance);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Order>
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): static
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders->add($order);
+            $order->setBillingProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): static
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getBillingProfile() === $this) {
+                $order->setBillingProfile(null);
+            }
+        }
 
         return $this;
     }

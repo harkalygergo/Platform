@@ -2,6 +2,7 @@
 
 namespace App\Entity\Platform;
 
+use App\Entity\Order;
 use App\Repository\Platform\InstanceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -48,12 +49,19 @@ class Instance
     #[ORM\ManyToMany(targetEntity: BillingProfile::class, inversedBy: 'instances')]
     private Collection $billingProfiles;
 
+    /**
+     * @var Collection<int, Order>
+     */
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'instance')]
+    private Collection $orders;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->users = new ArrayCollection();
         $this->services = new ArrayCollection();
         $this->billingProfiles = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -220,5 +228,35 @@ class Instance
     public function setBillingProfiles(Collection $billingProfiles): void
     {
         $this->billingProfiles = $billingProfiles;
+    }
+
+    /**
+     * @return Collection<int, Order>
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): static
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders->add($order);
+            $order->setInstance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): static
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getInstance() === $this) {
+                $order->setInstance(null);
+            }
+        }
+
+        return $this;
     }
 }
