@@ -93,6 +93,18 @@
 
 
                 <div class="dropdown">
+                    <a class="btn text-white" href="{{ path('admin_v1_dashboard') }}"><i class="bi bi-speedometer2"></i></a>
+
+                    <a href="{{ path('admin_v1_checkout') }}" class="btn text-white position-relative">
+                        <i class="bi bi-cart"></i>
+                        {% if cart is defined and cart is not null %}
+                            {% if cart.items is not null and cart.items|length > 0 %}
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                    {{ cart.items|length }}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+                    </a>
                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         <i class="bi bi-bell text-white"></i>
                     </button>
@@ -105,19 +117,19 @@
                 <div class="dropdown">
                     <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" style="font-size: 12px;" aria-expanded="false">
                         <img alt="account" class="rounded-circle" src="https://harkalygergo.github.io/harkalygergo.jpg" style="float:left;margin:0 5px;width:auto;height:32px;">
-                        <span>Harkály Gergő<br><small class="text-white-50 float-start">webfejlesztő</small></span>
+                        <span>{{ app.user.lastName }} {{ app.user.firstName }}<br><small class="text-white-50 float-start">webfejlesztő</small></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" data-bs-theme="dark">
-                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/account/edit"><i class="bi bi-person"></i> Profil és beállítások</a></li>
-                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/user/storage/"><i class="bi bi-usb-drive"></i> Személyes tárhely</a></li>
+                        <li><a class="dropdown-item text-white-50" href="#"><i class="bi bi-person"></i> Profil és beállítások</a></li>
+                        <li><a class="dropdown-item text-white-50" href="#"><i class="bi bi-usb-drive"></i> Személyes tárhely</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/instance/"><i class="bi bi-briefcase"></i> Vállalkozások és szervezetek</a></li>
-                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/billing/"><i class="bi bi-receipt"></i> Számlázási profilok</a></li>
-                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/system/"><i class="bi bi-gear"></i> Rendszereszközök</a></li>
+                        <li><a class="dropdown-item" href="{{ path('admin_v1_instances') }}"><i class="bi bi-briefcase"></i> Vállalkozások és szervezetek</a></li>
+                        <li><a class="dropdown-item" href="{{ path('admin_v1_billing_profiles') }}"><i class="bi bi-receipt"></i> Számlázási profilok</a></li>
+                        <li><a class="dropdown-item text-white-50" href="#"><i class="bi bi-gear"></i> Rendszereszközök</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-white-50" href="#"><i class="bi bi-question-circle"></i> Támogatás és support</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-warning" href="https://platform.brandcomstudio.com/login/logout/"><i class="bi bi-box-arrow-right"></i> Kijelentkezés</a></li>
+                        <li><a class="dropdown-item text-warning" href="{{ path('admin_logout') }}"><i class="bi bi-box-arrow-right"></i> Kijelentkezés</a></li>
                     </ul>
                 </div>
             </div>

@@ -3,6 +3,8 @@
 namespace App\Entity\Platform;
 
 use App\Repository\Platform\BillingProfileRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BillingProfileRepository::class)]
@@ -33,6 +35,15 @@ class BillingProfile
 
     #[ORM\Column(length: 128, nullable: true)]
     private ?string $email = null;
+
+    // add ManyToMany relationship with Instance entity
+    #[ORM\ManyToMany(targetEntity: Instance::class, mappedBy: 'billingProfiles')]
+    private Collection $instances;
+
+    public function __construct()
+    {
+        $this->instances = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +130,27 @@ class BillingProfile
     public function setEmail(?string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getInstances(): Collection
+    {
+        return $this->instances;
+    }
+
+    public function addInstance(Instance $instance): static
+    {
+        if (!$this->instances->contains($instance)) {
+            $this->instances[] = $instance;
+        }
+
+        return $this;
+    }
+
+    public function removeInstance(Instance $instance): static
+    {
+        $this->instances->removeElement($instance);
 
         return $this;
     }

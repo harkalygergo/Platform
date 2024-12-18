@@ -9,11 +9,17 @@
 
             {% for sidebarMenuKey, sidebarMenuValue in sidebarMenu %}
                 <h6 id="{{ sidebarMenuKey }}" class="sidebar-heading d-flex px-3 mb-1 text-white text-uppercase fw-bold">
-                    <!-- if the sidebarMenuValue['icon'] is defined and not empty, then render the icon -->
                     {% if sidebarMenuValue['icon'] is defined and sidebarMenuValue['icon'] is not empty %}
                         <i class="{{ sidebarMenuValue['icon'] }}"></i>
                     {% endif %}
-                    {{ sidebarMenuValue['title'] }}
+
+                    {% if sidebarMenuValue['route'] is defined and sidebarMenuValue['children'] is not defined %}
+                        <a href="{{ path(sidebarMenuValue['route']) }}" class="text-white text-decoration-none">
+                            {{ sidebarMenuValue['title'] }}
+                        </a>
+                    {% else %}
+                        {{ sidebarMenuValue['title'] }}
+                    {% endif %}
                 </h6>
                 {% if sidebarMenuValue['children'] is defined and sidebarMenuValue['children'] is not empty %}
                     <ul class="nav flex-column mb-auto">

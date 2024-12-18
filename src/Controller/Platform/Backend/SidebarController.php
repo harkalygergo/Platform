@@ -20,12 +20,11 @@ class SidebarController extends PlatformController
                 'icon' => 'bi bi-speedometer2',
                 'title' => $this->translator->trans('aside.dashboard'),
                 'route' => 'admin_v1_dashboard',
-                'children' => []
             ],
             'favourites' => [
                 'icon' => 'bi bi-star',
                 'title' => $this->translator->trans('aside.favourites'),
-                'route' => 'admin_v1_dashboard',
+                'route' => '',
                 'children' => [
                     'intranet' => [
                         'icon' => 'bi bi-info-circle',
@@ -38,7 +37,7 @@ class SidebarController extends PlatformController
             'erp' => [
                 'icon' => '',
                 'title' => 'ERP | Vállalkozásirányítás',
-                'route' => 'admin_v1_dashboard',
+                'route' => '',
                 'children' => [
                     'customers' => [
                         'icon' => 'bi bi-person-lines-fill',
@@ -75,7 +74,7 @@ class SidebarController extends PlatformController
             'settings' => [
                 'icon' => 'bi bi-gear',
                 'title' => 'Settings',
-                'route' => 'admin_v1_dashboard',
+                'route' => '',
                 'children' => []
             ],
         ];

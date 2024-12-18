@@ -45,11 +45,15 @@ class Instance
     #[ORM\OrderBy(['createdAt' => 'DESC'])]
     private Collection $services;
 
+    #[ORM\ManyToMany(targetEntity: BillingProfile::class, inversedBy: 'instances')]
+    private Collection $billingProfiles;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->users = new ArrayCollection();
         $this->services = new ArrayCollection();
+        $this->billingProfiles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -165,5 +169,56 @@ class Instance
     public function setServices(Collection $services): void
     {
         $this->services = $services;
+    }
+
+    public function addService(Service $service): self
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+            $service->setInstance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): self
+    {
+        if ($this->services->removeElement($service)) {
+            // set the owning side to null (unless already changed)
+            if ($service->getInstance() === $this) {
+                $service->setInstance(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBillingProfiles(): Collection
+    {
+        return $this->billingProfiles;
+    }
+
+    public function addBillingProfile(BillingProfile $billingProfile): self
+    {
+        if (!$this->billingProfiles->contains($billingProfile)) {
+            $this->billingProfiles->add($billingProfile);
+            $billingProfile->addInstance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBillingProfile(BillingProfile $billingProfile): self
+    {
+        if ($this->billingProfiles->removeElement($billingProfile)) {
+            $billingProfile->removeInstance($this);
+        }
+
+        return $this;
+    }
+
+    public function setBillingProfiles(Collection $billingProfiles): void
+    {
+        $this->billingProfiles = $billingProfiles;
     }
 }

@@ -65,6 +65,9 @@ class User implements UserInterface
     #[ORM\OrderBy(['publishedAt' => 'DESC'])]
     private Collection $ownInstances;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Cart $cart = null;
+
     public function __construct()
     {
         $this->instances = new ArrayCollection();
@@ -294,5 +297,17 @@ class User implements UserInterface
     {
         // TODO: Implement getUserIdentifier() method.
         return (string) $this->email;
+    }
+
+    public function getCart(): ?Cart
+    {
+        return $this->cart;
+    }
+
+    public function setCart(?Cart $cart): static
+    {
+        $this->cart = $cart;
+
+        return $this;
     }
 }

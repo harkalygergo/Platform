@@ -16,6 +16,16 @@ class BillingProfileRepository extends ServiceEntityRepository
         parent::__construct($registry, BillingProfile::class);
     }
 
+    public function findByUserInstances($instances)
+    {
+        return $this->createQueryBuilder('bp')
+            ->innerJoin('bp.instances', 'i')
+            ->where('i IN (:instances)')
+            ->setParameter('instances', $instances)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return BillingProfile[] Returns an array of BillingProfile objects
     //     */

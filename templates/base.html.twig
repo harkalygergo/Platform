@@ -1,3 +1,7 @@
+{% if app.user is defined and app.user is not null %}
+    {% set cart = app.user.cart %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}" data-bs-theme="{% if app.user is null %}dark{% else %}auto{% endif %}">
     <head>

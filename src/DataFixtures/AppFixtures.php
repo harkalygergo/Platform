@@ -28,9 +28,10 @@ class AppFixtures extends Fixture
         $this->loadInstances($manager);
         $this->loadServices($manager);
         $this->loadBillingProfiles($manager);
+        $this->loadInstancesBillingProfiles($manager);
     }
 
-    public function loadUsers($manager)
+    private function loadUsers($manager)
     {
         $csvContent = file_get_contents(__DIR__.'/users.csv');
 
@@ -63,7 +64,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    public function loadInstances($manager)
+    private function loadInstances($manager)
     {
         $csvContent = file_get_contents(__DIR__.'/instances.csv');
 
@@ -94,7 +95,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    public function loadServices($manager)
+    private function loadServices($manager)
     {
         $csvContent = file_get_contents(__DIR__.'/services.csv');
 
@@ -154,6 +155,38 @@ class AppFixtures extends Fixture
             $newBillingProfile->setEuVat($billingProfileData['euVat']);
             $newBillingProfile->setEmail($billingProfileData['email']);
             $manager->persist($newBillingProfile);
+        }
+
+        $manager->flush();
+    }
+
+    private function loadInstancesBillingProfiles($manager)
+    {
+        $csvFile = __DIR__ . '/instance_billing_profile.csv';
+        $csvContent = file_get_contents($csvFile);
+
+        // Convert CSV content to an array
+        $rows = array_map('str_getcsv', explode("\n", $csvContent));
+        $header = array_shift($rows);
+
+        foreach ($rows as $row) {
+            if (count($row) < count($header)) {
+                continue; // Skip incomplete rows
+            }
+
+            $data = array_combine($header, $row);
+
+            if ($data['instance_name']) {
+                $instanceRepository = $manager->getRepository(Instance::class);
+                $instance = $instanceRepository->findOneBy(['name' => $data['instance_name']]);
+
+                $billingProfileRepository = $manager->getRepository(BillingProfile::class);
+                $billingProfile = $billingProfileRepository->findOneBy(['name' => $data['billing_profile_name']]);
+
+                $instance->addBillingProfile($billingProfile);
+
+                $manager->persist($instance);
+            }
         }
 
         $manager->flush();

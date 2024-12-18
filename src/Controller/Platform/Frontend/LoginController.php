@@ -16,6 +16,7 @@ class LoginController extends PlatformController
     #[Route('/wp-admin', name: 'honeypot_wp_admin')]
     #[Route('/administrator', name: 'honeypot_administrator')]
     #[Route('/login', name: 'honeypot_login')]
+    #[Route('/register', name: 'honeypot_register')]
     public function honeypot(): Response
     {
         $environment = $this->getPlatformBasicEnviroments();
@@ -42,6 +43,9 @@ class LoginController extends PlatformController
                     // if the password is correct, redirect to the dashboard
                     $security->login($user, 'form_login', 'main');
 
+                    $user->setLastLogin(new \DateTimeImmutable());
+                    $this->doctrine->getManager()->flush();
+
                     return $this->redirectToRoute('admin_v1_dashboard');
                 }
             }
@@ -57,5 +61,16 @@ class LoginController extends PlatformController
         }
 
         return $this->render('platform/frontend/login.html.twig');
+    }
+
+    #[Route('/{_locale}/admin/logout', name: 'admin_logout')]
+    public function logout(Security $security): Response
+    {
+        $user = $this->getUser();
+        if ($user) {
+            $security->logout();
+        }
+
+        return $this->redirectToRoute('login');
     }
 }
