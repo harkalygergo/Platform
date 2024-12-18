@@ -65,12 +65,15 @@
                                             <i class="bi bi-pen"></i> <span class="d-none d-sm-inline-block">{{ 'action.edit'|trans }}</span>
                                         </a>
                                     {% endif %}
-                                    {% if 'delete' in actions %}
+                                    {#% if 'delete' in actions %}
                                         <a class="btn btn-sm btn-danger" title="{{ 'action.delete'|trans }}" href="#{{ td.id}}">
                                             <i class="bi bi-trash"></i> <span class="d-none d-sm-inline-block">{{ 'action.delete'|trans }}</span>
                                         </a>
-                                    {% endif %}
+                                    {% endif %#}
                                 {% endif %}
+                                <a class="btn btn-sm btn-success" title="" href="#{{ td.id}}">
+                                    <i class="bi bi-cart"></i> <span class="d-none d-sm-inline-block">kosárba</span>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}

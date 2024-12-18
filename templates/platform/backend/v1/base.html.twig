@@ -63,18 +63,88 @@
 
 {% block body %}
 
-    <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Company name</a>
+
+    <nav class="navbar navbar-expand navbar-dark bg-black p-0 m-0" style="border-bottom:1px solid gray;" aria-label="Second navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-6 text-warning p-1 m-0" href="/en/admin">
+
+                <b class="text-uppercase d-none d-sm-inline-block">
+                    <i class="bi bi-stack"></i>
+                    Platform
+                </b>
+                {% if app.user %}
+                    <br><small>{{ app.user.instances.first.name }}</small>
+                {% endif %}
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <i class="bi bi-list text-white"></i>
+                        </a>
+                    </li>
+                </ul>
+
+
+
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell text-white"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" data-bs-toggle="dropdown" data-bs-theme="dark">
+                        <li><span class="dropdown-item"><i>nincs új értesítés</i></span></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">összes megtekintése</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" style="font-size: 12px;" aria-expanded="false">
+                        <img alt="account" class="rounded-circle" src="https://harkalygergo.github.io/harkalygergo.jpg" style="float:left;margin:0 5px;width:auto;height:32px;">
+                        <span>Harkály Gergő<br><small class="text-white-50 float-start">webfejlesztő</small></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" data-bs-theme="dark">
+                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/account/edit"><i class="bi bi-person"></i> Profil és beállítások</a></li>
+                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/user/storage/"><i class="bi bi-usb-drive"></i> Személyes tárhely</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/instance/"><i class="bi bi-briefcase"></i> Vállalkozások és szervezetek</a></li>
+                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/billing/"><i class="bi bi-receipt"></i> Számlázási profilok</a></li>
+                        <li><a class="dropdown-item" href="https://platform.brandcomstudio.com/login/admin/system/"><i class="bi bi-gear"></i> Rendszereszközök</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-white-50" href="#"><i class="bi bi-question-circle"></i> Támogatás és support</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-warning" href="https://platform.brandcomstudio.com/login/logout/"><i class="bi bi-box-arrow-right"></i> Kijelentkezés</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!--header class="navbar sticky-top bg-black flex-md-nowrap p-0 shadow" data-bs-theme="dark">
+        <a class="navbar-brand py-0 px-1 m-0 fs-6 text-warning" href="/en/admin">
+            <b class="text-uppercase d-none d-sm-inline-block">
+                <i class="bi bi-stack"></i>
+                Platform
+            </b>
+            {% if app.user %}
+                <br><small>{{ app.user.instances.first.name }}</small>
+            {% endif %}
+        </a>
 
         <ul class="navbar-nav flex-row d-md-none">
             <li class="nav-item text-nowrap">
                 <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-                    <svg class="bi"><use xlink:href="#search"/></svg>
+                    <i class="bi bi-search"></i>
                 </button>
             </li>
             <li class="nav-item text-nowrap">
                 <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <svg class="bi"><use xlink:href="#list"/></svg>
+                    <i class="bi bi-list"></i>
                 </button>
             </li>
         </ul>
@@ -82,7 +152,7 @@
         <div id="navbarSearch" class="navbar-search w-100 collapse">
             <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
         </div>
-    </header>
+    </header-->
 
     <div class="container-fluid">
         <div class="row">
