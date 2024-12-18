@@ -37,6 +37,12 @@ class User implements UserInterface
     #[ORM\Column(length: 128, nullable: true)]
     private ?string $birthName = null;
 
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?\DateTimeInterface $birthdate = null;
+
+    #[ORM\Column(length: 128, nullable: true)]
+    private ?string $position = null;
+
     #[ORM\Column(length: 32, nullable: true)]
     private ?string $phone = null;
 
@@ -158,6 +164,30 @@ class User implements UserInterface
     public function setBirthName(?string $birthName): static
     {
         $this->birthName = $birthName;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(?\DateTimeInterface $birthdate): static
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getPosition(): ?string
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?string $position): static
+    {
+        $this->position = $position;
 
         return $this;
     }

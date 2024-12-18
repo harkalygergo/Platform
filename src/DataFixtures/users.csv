@@ -1,13 +1,13 @@
-name_prefix,first_name,middle_name,last_name,nick_name,password,birth_name,phone,email,status,last_login,last_activation,profile_image_url
-,Gergő,,Harkály,harkalygergo,$2y$10$uDEFShgO9XwhWL4kDTOY1uYeEABSjW.I29SjGBD3kzJM82Z4bmJL2,NULL,36706081384,platform@harkalygergo.hu,1,NULL,NULL,NULL
-,Csaba,,Simon-Kovács,SKCS,$2y$10$M84QsF3vsp.ppP.lYGPBTe23U3PzklcbqcPYHFevVuxa4ujecnF5.,NULL,36706031724,ask-net@gmail.hu,1,NULL,NULL,NULL
-Dr.,Ildikó,,Képes,Képes Ildikó,$2y$10$uDxWMe8/wwBOm8rH0ofjgeOaHm6V.nCItsahz1MzLudfXF0EypS46,NULL,36302188190,drkepesildiko@gmail.com,1,NULL,NULL,NULL
-,Zoltán,,Nagy,Nagy Zoltán,$2y$10$6mccEKila4TxCEAd4xU2PeO2SXGUuWOjiH.TiztdezlUlplwNotFm,NULL,36209168791,nagydrotfonokft@gmail.com,1,NULL,NULL,NULL
-,Attila,,Cseh,Cseh Attila,$2y$10$kbBtCRgfSjEpZAcgPuddGuSmNx5/rKVm3VTT1OfKcCeIUENPHJKZK,NULL,36209805513,acs@freemail.hu,1,NULL,NULL,NULL
-,Diána,,Standovári,Diána,$2y$10$NE5D7uETwxipP20tIY/yquQMHbyNkWw4BWHJdOFcgVY/BfUX/vkNK,NULL,36305465283,standovaridiana@gmail.com,1,NULL,NULL,NULL
-,Gizella,,Herczeg,Gizus,$2y$10$59AoPZPPrAH1KLZhvbpOROEsdjC4kbMa01WYbDtZYoi5Q2.apXrFq,NULL,36309994427,herczegsuzig@gmail.com,1,NULL,NULL,NULL
-,Péter,,Novotta,Novotta Péter,$2y$10$KNl5zZrOMX2GykWe8UVd..8hQndmtj51R4a4d4KTR4gBuNT4RwltO,NULL,36208031739,novi.peter@gmail.com,1,NULL,NULL,NULL
-,Ferenc,,Tili,Tili Ferenc,$2y$10$8Z.2JnCzNae.sVnT2.p7qeHHePaaKPt8LH/2SjspFdGy15NPNzojy,NULL,36302262032,ferenc@tili.hu,1,NULL,NULL,NULL
-Id.,József,,Tóth,Tóth József,$2y$10$Dal084euR.mvGJiVcRQofeutOLkhOpcaO9qktE0JBhv5R4zXOanPO,NULL,36703185810,j.toth@hunflex.hu,1,NULL,NULL,NULL
-,József,,Sándor,Joe,$2y$10$mMDxHqTKptGg1ew4Y7s13uRJLoJ/HLxKfoIX9/IgRrPsCjULlOYRm,NULL,36205900204,joesandor1987@gmail.com,1,NULL,NULL,NULL
-,László,,Molnár,Molnár László,$2y$10$2KON4aAe/j1ceFe/fpplTOTcVrvnN6zeKX60H4.gWJcjs0vSGYqXi,NULL,36703090027,lmolnar261@gmail.com,1,NULL,NULL,NULL
+name_prefix,first_name,middle_name,last_name,nick_name,password,birth_name,birth_date,position,phone,email,status,last_login,last_activation,profile_image_url
+,Gergő,,Harkály,harkalygergo,$2y$10$uDEFShgO9XwhWL4kDTOY1uYeEABSjW.I29SjGBD3kzJM82Z4bmJL2,NULL,1986-07-02,webfejlesztő,36706081384,platform@harkalygergo.hu,1,NULL,NULL,NULL
+,Csaba,,Simon-Kovács,SKCS,$2y$10$M84QsF3vsp.ppP.lYGPBTe23U3PzklcbqcPYHFevVuxa4ujecnF5.,NULL,,ügyvezető,36706031724,ask-net@gmail.hu,1,NULL,NULL,NULL
+Dr.,Ildikó,,Képes,Képes Ildikó,$2y$10$uDxWMe8/wwBOm8rH0ofjgeOaHm6V.nCItsahz1MzLudfXF0EypS46,NULL,,ügyvezető,36302188190,drkepesildiko@gmail.com,1,NULL,NULL,NULL
+,Zoltán,,Nagy,Nagy Zoltán,$2y$10$6mccEKila4TxCEAd4xU2PeO2SXGUuWOjiH.TiztdezlUlplwNotFm,NULL,,ügyvezető,36209168791,nagydrotfonokft@gmail.com,1,NULL,NULL,NULL
+,Attila,,Cseh,Cseh Attila,$2y$10$kbBtCRgfSjEpZAcgPuddGuSmNx5/rKVm3VTT1OfKcCeIUENPHJKZK,NULL,,ügyvezető,36209805513,acs@freemail.hu,1,NULL,NULL,NULL
+,Diána,,Standovári,Diána,$2y$10$NE5D7uETwxipP20tIY/yquQMHbyNkWw4BWHJdOFcgVY/BfUX/vkNK,NULL,,ügyvezető,36305465283,standovaridiana@gmail.com,1,NULL,NULL,NULL
+,Gizella,,Herczeg,Gizus,$2y$10$59AoPZPPrAH1KLZhvbpOROEsdjC4kbMa01WYbDtZYoi5Q2.apXrFq,NULL,,manuálterepeuta,36309994427,herczegsuzig@gmail.com,1,NULL,NULL,NULL
+,Péter,,Novotta,Novotta Péter,$2y$10$KNl5zZrOMX2GykWe8UVd..8hQndmtj51R4a4d4KTR4gBuNT4RwltO,NULL,,ügyvezető,36208031739,novi.peter@gmail.com,1,NULL,NULL,NULL
+,Ferenc,,Tili,Tili Ferenc,$2y$10$8Z.2JnCzNae.sVnT2.p7qeHHePaaKPt8LH/2SjspFdGy15NPNzojy,NULL,,ügyvezető,36302262032,ferenc@tili.hu,1,NULL,NULL,NULL
+Id.,József,,Tóth,Tóth József,$2y$10$Dal084euR.mvGJiVcRQofeutOLkhOpcaO9qktE0JBhv5R4zXOanPO,NULL,,ügyvezető,36703185810,j.toth@hunflex.hu,1,NULL,NULL,NULL
+,József,,Sándor,Joe,$2y$10$mMDxHqTKptGg1ew4Y7s13uRJLoJ/HLxKfoIX9/IgRrPsCjULlOYRm,NULL,,vállalkozó,36205900204,joesandor1987@gmail.com,1,NULL,NULL,NULL
+,László,,Molnár,Molnár László,$2y$10$2KON4aAe/j1ceFe/fpplTOTcVrvnN6zeKX60H4.gWJcjs0vSGYqXi,NULL,,ügyvezető,36703090027,lmolnar261@gmail.com,1,NULL,NULL,NULL
