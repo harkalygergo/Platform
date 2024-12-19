@@ -1,4 +1,7 @@
 instance,name,description,fee,currency,frequency_of_payment,next_payment_date,status,type
+demo,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
+,demo.platform.brandcomstudio.com,,0,HUF,payment.annual,2024-12-01,1,domain
 brandcom.,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,brandcom.hu,,0,HUF,payment.annual,2024-12-01,1,domain

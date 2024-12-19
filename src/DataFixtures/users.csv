@@ -1,4 +1,5 @@
 name_prefix,first_name,middle_name,last_name,nick_name,password,birth_name,birth_date,position,phone,email,status,last_login,last_activation,profile_image_url
+,Demo,,Demo,demo,$2y$10$uDEFShgO9XwhWL4kDTOY1uYeEABSjW.I29SjGBD3kzJM82Z4bmJL2,NULL,,tester,+3612346789,demo@platform.brandcomstudio.com,1,NULL,NULL,NULL
 ,Gergő,,Harkály,harkalygergo,$2y$10$uDEFShgO9XwhWL4kDTOY1uYeEABSjW.I29SjGBD3kzJM82Z4bmJL2,NULL,1986-07-02,webfejlesztő,36706081384,platform@harkalygergo.hu,1,NULL,NULL,NULL
 ,Csaba,,Simon-Kovács,SKCS,$2y$10$M84QsF3vsp.ppP.lYGPBTe23U3PzklcbqcPYHFevVuxa4ujecnF5.,NULL,,ügyvezető,36706031724,ask-net@gmail.hu,1,NULL,NULL,NULL
 Dr.,Ildikó,,Képes,Képes Ildikó,$2y$10$uDxWMe8/wwBOm8rH0ofjgeOaHm6V.nCItsahz1MzLudfXF0EypS46,NULL,,ügyvezető,36302188190,drkepesildiko@gmail.com,1,NULL,NULL,NULL
