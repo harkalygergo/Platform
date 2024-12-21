@@ -91,21 +91,31 @@
                 </ul>
 
 
+                <a class="btn text-white" href="{{ path('admin_v1_dashboard') }}"><i class="bi bi-speedometer2"></i></a>
 
                 <div class="dropdown">
-                    <a class="btn text-white" href="{{ path('admin_v1_dashboard') }}"><i class="bi bi-speedometer2"></i></a>
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                        <i class="bi bi-translate text-white"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" data-bs-theme="dark" style="position: absolute; inset: 0 0 auto auto; margin: 0; transform: translate(0px, 40px);" data-popper-placement="bottom-end">
+                        <li><span class="dropdown-item"><a class="text-decoration-none text-white" href="javascript:window.location.href='/en/admin/v1/dashboard/'">english</a></span></li>
+                        <li><span class="dropdown-item"><a class="text-decoration-none text-white" href="javascript:window.location.href='/hu/admin/v1/dashboard/'">magyar</a></span></li>
+                    </ul>
+                </div>
 
-                    <a href="{{ path('admin_v1_checkout') }}" class="btn text-white position-relative">
-                        <i class="bi bi-cart"></i>
-                        {% if cart is defined and cart is not null %}
-                            {% if cart.items is not null and cart.items|length > 0 %}
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                                    {{ cart.items|length }}
-                                </span>
-                            {% endif %}
+                <a href="{{ path('admin_v1_checkout') }}" class="btn text-white position-relative">
+                    <i class="bi bi-cart"></i>
+                    {% if cart is defined and cart is not null %}
+                        {% if cart.items is not null and cart.items|length > 0 %}
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                {{ cart.items|length }}
+                            </span>
                         {% endif %}
-                    </a>
-                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    {% endif %}
+                </a>
+
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown">
                         <i class="bi bi-bell text-white"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" data-bs-toggle="dropdown" data-bs-theme="dark">

@@ -23,7 +23,7 @@ class BackendController extends PlatformController
         $instance = $this->getUser()->getInstances()->first();
         $services = (new ServiceRepository($this->doctrine))->findBy(['instance' => $instance]);
 
-        return $this->render('platform/backend/v1/list.html.twig', [
+        return $this->render('platform/backend/v1/dashboard.html.twig', [
             'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
             'title' => 'Szolgáltatások',
             'tableHead' => [

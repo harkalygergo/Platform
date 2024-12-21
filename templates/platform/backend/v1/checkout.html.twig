@@ -5,7 +5,7 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
         <div class="row">
-            <div class="col">
+            <div class="col-7">
                 <div class="card mx-1 my-4">
                     <div class="card-header fw-bold text-uppercase d-flex justify-content-between">
                         <div>
@@ -74,7 +74,7 @@
 
                 </div>
             </div>
-            <div class="col">
+            <div class="col-5">
                 <div class="card mx-1 my-4">
                     <div class="card-header fw-bold text-uppercase d-flex justify-content-between">
                         <div>
@@ -93,11 +93,21 @@
                                     <td>{{ feeSum|number_format(0, '.', '.') }},- HUF</td>
                                 </tr>
                                 <tr>
+                                    <td><label for="paymentMethod">Fizetési mód</label>:</td>
+                                    <td>
+                                        <select class="form-select" aria-label="Fizetési mód" id="paymentMethod" name="paymentMethod" required>
+                                            <option value="">- Kérjük, válasszon! -</option>
+                                            <option value="transfer">átutalás</option>
+                                            <option value="paypal">PayPal bankkártyával</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td><label for="billingProfile">Számlázási profil</label>:</td>
                                     <td>
                                         {% if billingProfiles is defined %}
                                             <select class="form-select" aria-label="Számlázási profil" id="billingProfile" name="billingProfile" required>
-                                                <option value="0">- Kérjük, válasszon! -</option>
+                                                <option value="">- Kérjük, válasszon! -</option>
                                                 {% for billingProfile in billingProfiles %}
                                                     <option value="{{ billingProfile.id }}">{{ billingProfile.name }}</option>
                                                 {% endfor %}
@@ -117,6 +127,19 @@
                             </table>
                             <button type="submit" class="btn btn-primary">Megrendelés</button>
                         </form>
+
+
+                        <script src="https://www.paypal.com/sdk/js?client-id=BAAP-xLd51Kr_vNfPaSG7WY4U6M5BBdAGVJpsvXyTCw7nDvTQOgsNrJavzsFAFVAqKGRR5MFQZNgypYqIk&components=hosted-buttons&disable-funding=venmo&currency=HUF"></script>
+                        <div id="paypal-container-WPM8VU54HYJBE"></div>
+                        <script>
+                            paypal.HostedButtons({
+                                hostedButtonId: "WPM8VU54HYJBE",
+                            }).render("#paypal-container-WPM8VU54HYJBE")
+
+                            setTimeout(function() {
+                                document.getElementById("amount").value = {{ feeSum }};
+                            }, 3000);
+                        </script>
 
                     </div>
 
