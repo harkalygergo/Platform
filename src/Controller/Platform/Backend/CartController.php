@@ -63,7 +63,7 @@ class CartController extends PlatformController
         $this->doctrine->getManager()->persist($cart);
         $this->doctrine->getManager()->flush();
 
-        return $this->redirectToRoute('admin_v1_cart');
+        return $this->redirectToRoute('admin_v1_checkout');
     }
 
     #[Route('/{_locale}/admin/v1/cart/remove/{id}', name: 'admin_v1_cart_remove')]
@@ -76,6 +76,6 @@ class CartController extends PlatformController
         $this->doctrine->getManager()->persist($cart);
         $this->doctrine->getManager()->flush();
 
-        return $this->redirectToRoute('admin_v1_cart');
+        return $this->redirectToRoute('admin_v1_checkout');
     }
 }

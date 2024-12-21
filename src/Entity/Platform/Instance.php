@@ -2,7 +2,6 @@
 
 namespace App\Entity\Platform;
 
-use App\Entity\Order;
 use App\Repository\Platform\InstanceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

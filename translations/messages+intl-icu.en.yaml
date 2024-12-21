@@ -7,6 +7,7 @@ action:
     create: create
     update: update
     back: back
+    remove: remove
 date:
     createdAt: 'Created'
     updatedAt: 'Updated'

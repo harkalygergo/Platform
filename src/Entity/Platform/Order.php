@@ -1,12 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Platform;
 
-use App\Entity\Platform\BillingProfile;
-use App\Entity\Platform\Instance;
-use App\Entity\Platform\User;
 use App\Repository\OrderRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
@@ -41,6 +37,9 @@ class Order
 
     #[ORM\Column(length: 32, nullable: true)]
     private ?string $paymentStatus = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $comment = null;
 
     public function getId(): ?int
     {
@@ -139,6 +138,18 @@ class Order
     public function setPaymentStatus(?string $paymentStatus): static
     {
         $this->paymentStatus = $paymentStatus;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): static
+    {
+        $this->comment = $comment;
 
         return $this;
     }

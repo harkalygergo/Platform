@@ -30,16 +30,21 @@ class CheckoutController extends PlatformController
 
         $items = $cart->getItems();
 
-        $services = [];
+        $cartServices = [];
         $feeSum = 0;
 
         if (!is_null($items)) {
             foreach ($items as $item) {
                 $service = $this->doctrine->getRepository(Service::class)->find($item);
-                $services[] = $service;
+                $cartServices[] = $service;
                 $feeSum += $service->getFee();
             }
         }
+
+
+        $instance = $this->getUser()->getInstances()->first();
+        $services = (new ServiceRepository($this->doctrine))->findBy(['instance' => $instance]);
+
 
         return $this->render('platform/backend/v1/checkout.html.twig', [
             'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
@@ -54,7 +59,7 @@ class CheckoutController extends PlatformController
                 'status' => 'Státusz',
             ],
             //'tableBody' => (new ServiceRepository($this->doctrine))->findAll(),
-            'tableBody' => $services,
+            'tableBody' => $cartServices,
             'actions' => [
                 'view',
                 'edit',
@@ -62,6 +67,7 @@ class CheckoutController extends PlatformController
             ],
             'feeSum' => $feeSum,
             'billingProfiles' => $billingProfiles,
+            'services' => $services,
         ]);
     }
 }

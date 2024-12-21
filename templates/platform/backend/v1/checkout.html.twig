@@ -4,6 +4,12 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
+        <div class="mx-3 my-4">
+            <h1 class="fw-bold fs-3">
+                <i class="bi bi-speedometer2 mx-3"></i> Vezérlőpult
+            </h1>
+            <hr>
+
         <div class="row">
             <div class="col-7">
                 <div class="card mx-1 my-4">
@@ -23,8 +29,6 @@
                                     {% for th in tableHead %}
                                         <th scope="col">{{ th }}</th>
                                     {% endfor %}
-                                    <th class="text-center">{{ 'date.createdAt'|trans }}</th>
-                                    <th class="text-center">{{ 'date.updatedAt'|trans }}</th>
                                     <th scope="col" class="text-end">Eszközök</th>
                                 </tr>
                                 </thead>
@@ -42,19 +46,11 @@
                                                 {% endif %}
                                             </td>
                                         {% endfor %}
-                                        <td class="text-center">{% if td.createdAt is defined %}{{ td.createdAt.format('Y-m-d H:i:s') }}{% endif %}</td>
-                                        <td class="text-center">
-                                            {% if td.updatedAt is defined and td.updatedAt is not null %}
-                                                {{ td.updatedAt.format('Y-m-d H:i:s') }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
-                                        </td>
                                         <td class="text-end">
                                             {% if actions is defined %}
                                                 {% if 'delete' in actions %}
-                                                    <a class="btn btn-sm btn-danger" title="{{ 'action.delete'|trans }}" href="#{{ td.id}}">
-                                                        <i class="bi bi-trash"></i> <span class="d-none d-sm-inline-block">{{ 'action.delete'|trans }}</span>
+                                                    <a class="btn btn-sm btn-danger" title="{{ 'action.remove'|trans }}" href="{{ path('admin_v1_cart_remove', { "id": td.id } ) }}">
+                                                        <i class="bi bi-x-lg"></i> <span class="d-none d-sm-inline-block">{{ 'action.remove'|trans }}</span>
                                                     </a>
                                                 {% endif %}
                                             {% endif %}
@@ -70,9 +66,60 @@
                             Összesen: {{ tableBody|length }}
                         </small>
                     </div>
-
-
                 </div>
+
+                <hr>
+
+                <div class="card">
+                    <div class="card-header fw-bold text-uppercase d-flex justify-content-between">
+                        Rendelhető szolgáltatások
+                    </div>
+                    <div class="card-body">
+
+                        <div class="table-responsive small">
+
+                            <table class="table table-striped table-sm">
+                                <tbody>
+                                {% for td in services %}
+                                    <tr>
+                                        <td>{{ loop.index }}.</td>
+                                        {% for thKey, thValue in tableHead %}
+                                            <td>
+                                                {% if attribute(td, thKey) is same as(true) or attribute(td, thKey) is same as(false) %}
+                                                    {{ attribute(td, thKey) ? '&#9989;' : '&#10060;' }}
+                                                {% else %}
+                                                    {% set variable = attribute(td, thKey) %}
+                                                    {{ variable }}
+                                                {% endif %}
+                                            </td>
+                                        {% endfor %}
+                                        <td class="text-end">
+                                            <a class="btn btn-sm btn-success" title="" href="{{ path('admin_v1_cart_add', {"id": td.id}) }}">
+                                                <i class="bi bi-cart"></i> <span class="d-none d-sm-inline-block">kosárba</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="card-footer text-center text-body-secondary">
+                        <small>
+                            Összesen: {{ services|length }}
+                        </small>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
             </div>
             <div class="col-5">
                 <div class="card mx-1 my-4">
@@ -82,10 +129,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-
-                        <h2>Megrendelés</h2>
-
-                        <form method="post">
+                        <form method="post" action="{{ path('admin_v1_orders_create') }}" onsubmit="return submitForm(this)">
+                            <input type="hidden" name="total" id="total" value="{{ feeSum }}">
                             <table class="table">
                                 <tbody>
                                 <tr>
@@ -125,10 +170,23 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary">Megrendelés</button>
+                            <div class="d-flex">
+                                <button type="submit" class="btn btn-success btn-lg btn-fluid">
+                                    <i class="bi bi-lock"></i>
+                                    Megrendelés
+                                </button>
+                            </div>
                         </form>
+                    </div>
 
-
+                </div>
+                <div class="card mx-1 my-4 d-none" id="payment">
+                    <div class="card-header fw-bold text-uppercase d-flex justify-content-between">
+                        <div>
+                            Fizetés
+                        </div>
+                    </div>
+                    <div class="card-body">
                         <script src="https://www.paypal.com/sdk/js?client-id=BAAP-xLd51Kr_vNfPaSG7WY4U6M5BBdAGVJpsvXyTCw7nDvTQOgsNrJavzsFAFVAqKGRR5MFQZNgypYqIk&components=hosted-buttons&disable-funding=venmo&currency=HUF"></script>
                         <div id="paypal-container-WPM8VU54HYJBE"></div>
                         <script>
@@ -146,8 +204,56 @@
                 </div>
             </div>
         </div>
+        </div>
 
     </main>
+
+    <script>
+        function submitForm(form) {
+            // disable submit button
+            form.querySelector('button[type="submit"]').disabled = true;
+            showLoader();
+
+            // Collect form data
+            const formData = new FormData(form);
+
+            // Create an AJAX request
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Handle success response
+                    console.log('Order created successfully:', xhr.responseText);
+
+                    alert("Megrendelés sikeresen rögzítve! Rendelés azonosító: "+xhr.responseText);
+
+                    if (form.paymentMethod.value === 'paypal') {
+                        document.getElementById('payment').classList.remove('d-none');
+                        alert("Fizetési lehetőség megjelenítve. Számla sikeres fizetést követően kerül kiállításra.");
+                    } else {
+                        alert("A számla hamarosan érkezik elektronikus úton.");
+                    }
+                } else {
+                    // Handle error response
+                    console.error('Error creating order:', xhr.statusText);
+                }
+            };
+
+            xhr.onerror = function() {
+                // Handle network error
+                console.error('Network error');
+            };
+
+            // Send the request with form data
+            xhr.send(formData);
+
+            hideLoader();
+
+            return false; // Prevent default form submission
+        }
+    </script>
 
 
 {% endblock %}

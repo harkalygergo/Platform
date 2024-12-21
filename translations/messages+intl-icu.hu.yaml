@@ -7,6 +7,7 @@ action:
     create: létrehozás
     update: frissítés
     back: vissza
+    remove: eltávolítás
 date:
     createdAt: 'Létrehozva'
     updatedAt: 'Frissítve'
