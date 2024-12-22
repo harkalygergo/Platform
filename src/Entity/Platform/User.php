@@ -67,8 +67,7 @@ class User implements UserInterface
     /**
      * @var Collection<int, Instance>
      */
-    #[ORM\OneToMany(targetEntity: Instance::class, mappedBy: 'instance', orphanRemoval: true, cascade: ['persist'])]
-    #[ORM\OrderBy(['publishedAt' => 'DESC'])]
+    #[ORM\OneToMany(targetEntity: Instance::class, mappedBy: 'owner', orphanRemoval: true, cascade: ['persist'])]
     private Collection $ownInstances;
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]

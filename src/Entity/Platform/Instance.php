@@ -41,7 +41,7 @@ class Instance
     /**
      * @var Collection<int, Service>
      */
-    #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'service', orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'instance', orphanRemoval: true, cascade: ['persist'])]
     #[ORM\OrderBy(['createdAt' => 'DESC'])]
     private Collection $services;
 
