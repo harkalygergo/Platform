@@ -111,15 +111,24 @@ class OrderController extends PlatformController
             'total' => $order->getTotal(),
         ];
 
+        $emailBody = "Rendelés azonosító: #" . $order->getId() . "\n";
+        $emailBody .= "Név: " . $order->getCreatedBy()->getFullName() . "\n";
+        $emailBody .= "Szervezet: " . $order->getInstance()->getName() . "\n";
+        $emailBody .= "Összeg: " . $order->getTotal() . "\n";
+        $emailBody .= "Megjegyzés: " . $order->getComment() . "\n";
+        $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n";
+        $emailBody .= "Tételek: \n";
+        $emailBody .= $serializer->serialize($order->getItems(), 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['cart']]);
+
+
         $email = (new Email())
-            ->from('hello@harkalygergo.hu')
-            ->to('gergo.harkaly@gmail.com')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
+            ->from('smtp@platform.brandcomstudio.com')
+            ->to('hello@brandcomstudio.com')
+            ->cc('gergo.harkaly@gmail.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
             ->subject('Új megrendelés: #'. $order->getId())
-            ->text(json_encode($orderJSON, JSON_UNESCAPED_UNICODE));
+            ->text($emailBody);
 
         $logger->info('Sending email', ['email' => $order]);
         $mailer->send($email);

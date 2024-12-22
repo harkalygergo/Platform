@@ -39,7 +39,7 @@ php bin/console cache:clear;
 One line command for local development deploy:
 
 ```bash
-composer update; npm update; composer dump-autoload -o; php bin/console cache:clear; php bin/console doctrine:migrations:diff; php bin/console doctrine:schema:validate;
+composer update; npm update; composer dump-autoload -o; php bin/console cache:pool:clear --all; php bin/console doctrine:migrations:diff; php bin/console doctrine:schema:validate;
 ```
 
 ### Developer Book
