@@ -7,6 +7,7 @@ use App\Entity\Platform\BillingProfile;
 use App\Entity\Platform\Cart;
 use App\Entity\Platform\Order;
 use App\Entity\Platform\Service;
+use App\Entity\Platform\User;
 use App\Form\Platform\BillingProfileType;
 use App\Repository\Platform\ServiceRepository;
 use Psr\Log\LoggerInterface;
@@ -15,6 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Exception\CircularReferenceException;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class OrderController extends PlatformController
 {
@@ -82,7 +86,7 @@ class OrderController extends PlatformController
     }
 
     #[Route('/{_locale}/admin/v1/orders/create', name: 'admin_v1_orders_create')]
-    public function create(Request $request, MailerInterface $mailer, LoggerInterface $logger): Response
+    public function create(Request $request, MailerInterface $mailer, LoggerInterface $logger, SerializerInterface $serializer): Response
     {
         // get billing profile object based on posted integer id
         $billingProfile = $this->doctrine->getRepository(BillingProfile::class)->find($request->request->get('billingProfile'));
@@ -101,7 +105,11 @@ class OrderController extends PlatformController
         $this->doctrine->getManager()->persist($order);
         $this->doctrine->getManager()->flush();
 
-        // send email to hello@harkalygergo.hu with posted data and new order ID
+        $orderJSON = [
+            'user' => $order->getCreatedBy()->getFullName(),
+            'instance' => $order->getInstance()->getName(),
+            'total' => $order->getTotal(),
+        ];
 
         $email = (new Email())
             ->from('hello@harkalygergo.hu')
@@ -110,11 +118,10 @@ class OrderController extends PlatformController
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
-            ->subject('Time for Symfony Mailer!')
-            ->text('Sending emails is fun again!')
-            ->html('<p>See Twig integration for better HTML integration!</p>');
+            ->subject('Új megrendelés: #'. $order->getId())
+            ->text(json_encode($orderJSON, JSON_UNESCAPED_UNICODE));
 
-        $logger->info('Sending email', ['email' => $email]);
+        $logger->info('Sending email', ['email' => $order]);
         $mailer->send($email);
 
         // return with new order ID

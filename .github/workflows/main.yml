@@ -39,4 +39,5 @@ jobs:
                         composer dump-autoload -o
                         php bin/console cache:clear
                         php bin/console doctrine:migrations:migrate --no-interaction --verbose
-                        php bin/console doctrine:migrations:diff
+                        php bin/console doctrine:migrations:diff --no-interaction
+                        git status
