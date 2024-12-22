@@ -37,4 +37,5 @@ jobs:
                         composer update
                         npm update
                         composer dump-autoload -o
+                        php bin/console doctrine:migrations:migrate
                         php bin/console doctrine:migrations:diff
