@@ -198,7 +198,6 @@
                 <div class="dropdown">
                     <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" style="font-size: 12px;" aria-expanded="false">
                         {% if (app.user.profileImageUrl) %}
-                            {{ dump(app.user.profileImageUrl) }}
                             <img alt="account" class="rounded-circle" src="{{ app.user.profileImageUrl }}" style="float:left;margin:0 5px;width:auto;height:32px;">
                         {% else %}
                             <i class="bi bi-person-circle" style="float:left;margin:0 5px;width:auto;font-size:25px;"></i>
