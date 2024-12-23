@@ -8,6 +8,8 @@ action:
     update: frissítés
     back: vissza
     remove: eltávolítás
+data:
+    description: Leírás
 date:
     createdAt: 'Létrehozva'
     updatedAt: 'Frissítve'

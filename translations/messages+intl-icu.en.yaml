@@ -8,8 +8,11 @@ action:
     update: update
     back: back
     remove: remove
+data:
+    description: Description
 date:
     createdAt: 'Created'
+    description: Description
     updatedAt: 'Updated'
 payment:
     yearly: yearly

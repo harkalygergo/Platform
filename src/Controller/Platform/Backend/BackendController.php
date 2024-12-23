@@ -28,6 +28,7 @@ class BackendController extends PlatformController
             'title' => 'Szolgáltatások',
             'tableHead' => [
                 'name' => 'Megnevezés',
+                'description' => $this->translator->trans('data.description'),
                 'type' => 'Típus',
                 'fee' => 'Díj',
                 'currency' => 'Pénznem',

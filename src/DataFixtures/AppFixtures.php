@@ -62,7 +62,7 @@ class AppFixtures extends Fixture
             $user->setPhone($data['phone']);
             $user->setEmail($data['email']);
             $user->setStatus($data['status']);
-            $user->setProfileImageUrl($data['profile_image_url']);
+            //$user->setProfileImageUrl($data['profile_image_url']);
 
             $manager->persist($user);
         }
