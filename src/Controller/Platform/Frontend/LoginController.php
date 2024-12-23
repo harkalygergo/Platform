@@ -19,6 +19,11 @@ class LoginController extends PlatformController
     #[Route('/register', name: 'honeypot_register')]
     public function honeypot(): Response
     {
+        // if user is logged in, redirect to the dashboard
+        if ($this->getUser()) {
+            return $this->redirectToRoute('admin_v1_dashboard');
+        }
+
         $environment = $this->getPlatformBasicEnviroments();
 
         return $this->render('platform/frontend/restricted.html.twig', $environment);

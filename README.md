@@ -1,5 +1,5 @@
 # Platform
-###### Version: 2024.12.23.2
+###### Version: 2024.12.23.3
 
 Platform is a multisite and multilingual compatibility Management System based on Symfony PHP Framework. It's ideal for managing and growing any organization. Free and open-source and always will be.
 
@@ -43,6 +43,12 @@ composer update; npm update; composer dump-autoload -o; php bin/console cache:po
 ```
 
 ### Developer Book
+
+Load fixtures:
+
+```bash
+php bin/console doctrine:schema:drop --force && php bin/console doctrine:schema:update --force && php bin/console doctrine:fixtures:load -n
+```
 
 Platform based on:
 
