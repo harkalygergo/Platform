@@ -110,10 +110,10 @@ class OrderController extends PlatformController
         $emailBody .= "Név: " . $order->getCreatedBy()->getFullName() . "\n";
         $emailBody .= "Szervezet: " . $order->getInstance()->getName() . "\n";
         $emailBody .= "Összeg: " . $order->getTotal() . "\n";
-        $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n\n";
-        $emailBody .= "Számlázási profil: " . $request->request->get('billingProfile') . "\n\n";
+        $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n";
+        $emailBody .= "Számlázási profil: " . $request->request->get('billingProfile') . "\n";
         $emailBody .= "Megjegyzés: " . $order->getComment() . "\n";
-        $emailBody .= "Tételek: \n";
+        $emailBody .= "\n Tételek: \n";
 
         foreach ($order->getItems() as $item) {
             $service = $this->doctrine->getRepository(Service::class)->find($item);
