@@ -110,8 +110,9 @@ class OrderController extends PlatformController
         $emailBody .= "Név: " . $order->getCreatedBy()->getFullName() . "\n";
         $emailBody .= "Szervezet: " . $order->getInstance()->getName() . "\n";
         $emailBody .= "Összeg: " . $order->getTotal() . "\n";
-        $emailBody .= "Megjegyzés: " . $order->getComment() . "\n";
         $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n\n";
+        $emailBody .= "Számlázási profil: " . $request->request->get('billingProfile') . "\n\n";
+        $emailBody .= "Megjegyzés: " . $order->getComment() . "\n";
         $emailBody .= "Tételek: \n";
 
         foreach ($order->getItems() as $item) {
@@ -130,7 +131,7 @@ class OrderController extends PlatformController
 
         foreach ($toAddresses as $toAddress) {
             $email = (new Email())
-                ->from(new Address('smtp@platform.brandcomstudio.com', 'PLATFORM'))
+                ->from(Address::create('PLATFORM <smtp@platform.brandcomstudio.com>'))
                 ->to($toAddress)
                 //->bcc('test-e75btfj0o@srv1.mail-tester.com')
                 ->replyTo('hello@brandcomstudio.com')

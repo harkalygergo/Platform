@@ -154,7 +154,7 @@
                                             <select class="form-select" aria-label="Számlázási profil" id="billingProfile" name="billingProfile" required>
                                                 <option value="">- Kérjük, válasszon! -</option>
                                                 {% for billingProfile in billingProfiles %}
-                                                    <option value="{{ billingProfile.id }}">{{ billingProfile.name }}</option>
+                                                    <option value="{{ billingProfile.id }}">{{ billingProfile.name }} {{ billingProfile.vat }}</option>
                                                 {% endfor %}
                                             </select>
                                         {% else %}
