@@ -120,18 +120,26 @@ class OrderController extends PlatformController
 
         //$emailBody .= $serializer->serialize($order->getItems(), 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['cart']]);
 
-        $email = (new Email())
-            ->from('smtp@platform.brandcomstudio.com')
-            ->to('hello@brandcomstudio.com')
-            ->cc('gergo.harkaly@gmail.com')
-            //->bcc('test-e75btfj0o@srv1.mail-tester.com')
-            ->replyTo('hello@brandcomstudio.com')
-            //->priority(Email::PRIORITY_HIGH)
-            ->subject('Új megrendelés: #'. $order->getId())
-            ->text($emailBody);
+        $toAddresses = [
+            'hello@brandcomstudio.com',
+            'gergo.harkaly@gmail.com',
+            // logged in user email
+            $this->getUser()->getEmail(),
+        ];
 
-        $logger->info('Sending email', ['email' => $order]);
-        $mailer->send($email);
+        foreach ($toAddresses as $toAddress) {
+            $email = (new Email())
+                ->from('smtp@platform.brandcomstudio.com')
+                ->to($toAddress)
+                //->bcc('test-e75btfj0o@srv1.mail-tester.com')
+                ->replyTo('hello@brandcomstudio.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject('Új megrendelés: #'. $order->getId())
+                ->text($emailBody);
+
+            $logger->info('Sending email', ['email' => $order]);
+            $mailer->send($email);
+        }
 
         // empty the cart
         $cart = $this->getUser()->getCart();
