@@ -122,11 +122,10 @@ class OrderController extends PlatformController
 
         $email = (new Email())
             ->from('smtp@platform.brandcomstudio.com')
-            ->to('test-r6o4npceu@srv1.mail-tester.com')
-            ->cc('hello@brandcomstudio.com')
-            //->cc('gergo.harkaly@gmail.com')
+            ->to('hello@brandcomstudio.com')
+            ->cc('gergo.harkaly@gmail.com')
             //->bcc('test-e75btfj0o@srv1.mail-tester.com')
-            //->replyTo('fabien@example.com')
+            ->replyTo('hello@brandcomstudio.com')
             //->priority(Email::PRIORITY_HIGH)
             ->subject('Új megrendelés: #'. $order->getId())
             ->text($emailBody);
