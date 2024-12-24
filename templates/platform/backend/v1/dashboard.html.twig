@@ -25,7 +25,14 @@
                                 </tr>
                                 <tr>
                                     <td>Domain:</td>
-                                    <td class="fw-bold">?</td>
+                                    <td class="fw-bold">
+                                        {% set domainCount = 0 %}
+                                        {% for s in app.user.instances.first.services %}
+                                            {% if s.type == "domain" %}
+                                                {% set domainCount = domainCount + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{ domainCount }}</td>
                                 </tr>
                                 <tr>
                                     <td>Honlap, webshop:</td>
@@ -62,6 +69,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <p class="card-text">Szervezeti meghívó link: <code>hamarosan</code>.</p>
                         </div>
                     </div>
                 </div>

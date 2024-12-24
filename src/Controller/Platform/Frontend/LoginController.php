@@ -29,7 +29,7 @@ class LoginController extends PlatformController
         return $this->render('platform/frontend/restricted.html.twig', $environment);
     }
 
-    #[Route('/{_locale}/admin', name: 'login')]
+    #[Route('/{_locale}/admin/v1', name: 'login')]
     public function index(Request $request, Security $security): Response
     {
         //dump($_POST);
