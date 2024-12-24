@@ -110,20 +110,22 @@ class OrderController extends PlatformController
         $emailBody .= "Szervezet: " . $order->getInstance()->getName() . "\n";
         $emailBody .= "Összeg: " . $order->getTotal() . "\n";
         $emailBody .= "Megjegyzés: " . $order->getComment() . "\n";
-        $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n";
+        $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n\n";
         $emailBody .= "Tételek: \n";
 
         foreach ($order->getItems() as $item) {
-            $emailBody .= $item->getName() . " - " . $item->getType() . " - " . $item->getFee() . " " . $item->getCurrency() . "\n";
+            $service = $this->doctrine->getRepository(Service::class)->find($item);
+            $emailBody .= $service->getName() . " - " . $service->getType() . " - " . $service->getFee() . " " . $service->getCurrency() . "\n";
         }
 
         //$emailBody .= $serializer->serialize($order->getItems(), 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['cart']]);
 
         $email = (new Email())
             ->from('smtp@platform.brandcomstudio.com')
-            ->to('hello@brandcomstudio.com')
-            ->cc('gergo.harkaly@gmail.com')
-            ->bcc('test-e75btfj0o@srv1.mail-tester.com')
+            ->to('test-r6o4npceu@srv1.mail-tester.com')
+            ->cc('hello@brandcomstudio.com')
+            //->cc('gergo.harkaly@gmail.com')
+            //->bcc('test-e75btfj0o@srv1.mail-tester.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
             ->subject('Új megrendelés: #'. $order->getId())

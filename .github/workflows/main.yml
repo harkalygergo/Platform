@@ -34,10 +34,10 @@ jobs:
                         git checkout -- composer.lock
                         git checkout -- package-lock.json
                         git pull
-                        composer update
-                        npm update
-                        composer dump-autoload -o
-                        php bin/console cache:clear
-                        php bin/console doctrine:migrations:migrate --no-interaction --verbose
-                        php bin/console doctrine:migrations:diff --no-interaction
+                        # composer update
+                        # npm update
+                        # composer dump-autoload -o
+                        # php bin/console cache:clear
+                        # php bin/console doctrine:migrations:migrate --no-interaction --verbose
+                        # php bin/console doctrine:migrations:diff --no-interaction
                         git status
