@@ -14,6 +14,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Exception\CircularReferenceException;
@@ -129,7 +130,7 @@ class OrderController extends PlatformController
 
         foreach ($toAddresses as $toAddress) {
             $email = (new Email())
-                ->from('smtp@platform.brandcomstudio.com')
+                ->from(new Address('smtp@platform.brandcomstudio.com', 'PLATFORM'))
                 ->to($toAddress)
                 //->bcc('test-e75btfj0o@srv1.mail-tester.com')
                 ->replyTo('hello@brandcomstudio.com')
