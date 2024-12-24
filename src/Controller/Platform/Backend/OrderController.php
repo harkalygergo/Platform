@@ -105,12 +105,6 @@ class OrderController extends PlatformController
         $this->doctrine->getManager()->persist($order);
         $this->doctrine->getManager()->flush();
 
-        $orderJSON = [
-            'user' => $order->getCreatedBy()->getFullName(),
-            'instance' => $order->getInstance()->getName(),
-            'total' => $order->getTotal(),
-        ];
-
         $emailBody = "Rendelés azonosító: #" . $order->getId() . "\n";
         $emailBody .= "Név: " . $order->getCreatedBy()->getFullName() . "\n";
         $emailBody .= "Szervezet: " . $order->getInstance()->getName() . "\n";
@@ -118,13 +112,18 @@ class OrderController extends PlatformController
         $emailBody .= "Megjegyzés: " . $order->getComment() . "\n";
         $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n";
         $emailBody .= "Tételek: \n";
-        $emailBody .= $serializer->serialize($order->getItems(), 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['cart']]);
 
+        foreach ($order->getItems() as $item) {
+            $emailBody .= $item->getName() . " - " . $item->getType() . " - " . $item->getFee() . " " . $item->getCurrency() . "\n";
+        }
+
+        //$emailBody .= $serializer->serialize($order->getItems(), 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['cart']]);
 
         $email = (new Email())
             ->from('smtp@platform.brandcomstudio.com')
             ->to('hello@brandcomstudio.com')
             ->cc('gergo.harkaly@gmail.com')
+            ->bcc('test-e75btfj0o@srv1.mail-tester.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
             ->subject('Új megrendelés: #'. $order->getId())
@@ -132,6 +131,12 @@ class OrderController extends PlatformController
 
         $logger->info('Sending email', ['email' => $order]);
         $mailer->send($email);
+
+        // empty the cart
+        $cart = $this->getUser()->getCart();
+        $cart->setItems([]);
+        $this->doctrine->getManager()->persist($cart);
+        $this->doctrine->getManager()->flush();
 
         // return with new order ID
         return new Response($order->getId());
