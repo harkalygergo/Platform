@@ -17,6 +17,12 @@ class CheckoutController extends PlatformController
     #[Route('/{_locale}/admin/v1/checkout', name: 'admin_v1_checkout')]
     public function index(Request $request): Response
     {
+        // if user is not logged in, redirect to login
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('login');
+        }
+
+
         $user = $this->getUser();
         $instances = $user->getInstances();
         $billingProfiles = $this->doctrine->getRepository(BillingProfile::class)->findByUserInstances($instances);
