@@ -111,7 +111,10 @@ class OrderController extends PlatformController
         $emailBody .= "Szervezet: " . $order->getInstance()->getName() . "\n";
         $emailBody .= "Összeg: " . $order->getTotal() . "\n";
         $emailBody .= "Fizetési mód: " . $request->request->get('paymentMethod') . "\n";
-        $emailBody .= "Számlázási profil: " . $request->request->get('billingProfile') . "\n";
+
+        $billingProfileId = $request->request->get('billingProfile');
+        $billingProfile = $this->doctrine->getRepository(BillingProfile::class)->find($billingProfileId);
+        $emailBody .= "Számlázási profil: " . $billingProfile->getName() . "\n";
         $emailBody .= "Megjegyzés: " . $order->getComment() . "\n";
         $emailBody .= "\n Tételek: \n";
 
