@@ -11,10 +11,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface
 {
+    final public const ROLE_USER = 'ROLE_USER';
+    final public const ROLE_ADMIN = 'ROLE_ADMIN';
+    final public const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
 
     #[ORM\Column(length: 8, nullable: true)]
     private ?string $namePrefix = null;
@@ -88,6 +95,39 @@ class User implements UserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = self::ROLE_USER;
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function addRole(string $role): static
+    {
+        $this->roles[] = $role;
+
+        return $this;
+    }
+
+    public function removeRole(string $role): static
+    {
+        $key = array_search($role, $this->roles, true);
+        if ($key !== false) {
+            unset($this->roles[$key]);
+        }
+
+        return $this;
     }
 
     public function getNamePrefix(): ?string
@@ -317,11 +357,6 @@ class User implements UserInterface
     public function getSalt(): ?string
     {
         return null;
-    }
-
-    public function getRoles(): array
-    {
-        return ['ROLE_USER'];
     }
 
     public function eraseCredentials(): void

@@ -3,11 +3,14 @@
 namespace App\Controller\Platform\Backend;
 
 use App\Controller\Platform\PlatformController;
+use App\Entity\Platform\User;
 use App\Repository\Platform\ServiceRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted(User::ROLE_ADMIN)]
 class ServiceDomainController extends PlatformController
 {
     #[Route('/{_locale}/admin/v1/domains', name: 'admin_v1_domains')]

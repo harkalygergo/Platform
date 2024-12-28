@@ -17,6 +17,16 @@ class BackendController extends PlatformController
         parent::__construct($requestStack, $doctrine, $translator);
     }
 
+    #[Route('/{_locale}/admin/v1/access-denied', name: 'admin_v1_access-denied')]
+    public function accessDenied(): Response
+    {
+        return $this->render('platform/backend/v1/access-denied.html.twig', [
+            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'title' => 'Hozzáférés megtagadva',
+        ]);
+    }
+
+
     #[Route('/{_locale}/admin/v1/dashboard', name: 'admin_v1_dashboard')]
     public function index(): Response
     {

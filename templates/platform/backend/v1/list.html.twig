@@ -48,11 +48,15 @@
                                 <td>{{ loop.index }}.</td>
                                 {% for thKey, thValue in tableHead %}
                                     <td>
-                                        {% if attribute(td, thKey) is same as(true) or attribute(td, thKey) is same as(false) %}
-                                            {{ attribute(td, thKey) ? '&#9989;' : '&#10060;' }}
+                                        {% if attribute(td, thKey) is instanceof('DateTime') or attribute(td, thKey) is instanceof('DateTimeImmutable') %}
+                                            {{ attribute(td, thKey).format('Y-m-d') }}
                                         {% else %}
-                                            {% set variable = attribute(td, thKey) %}
-                                            {{ variable }}
+                                            {% if attribute(td, thKey) is same as(true) or attribute(td, thKey) is same as(false) %}
+                                                {{ attribute(td, thKey) ? '&#9989;' : '&#10060;' }}
+                                            {% else %}
+                                                {% set variable = attribute(td, thKey) %}
+                                                {{ variable }}
+                                            {% endif %}
                                         {% endif %}
                                     </td>
                                 {% endfor %}
