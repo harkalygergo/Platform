@@ -29,7 +29,7 @@ class SidebarController extends PlatformController
                     'intranet' => [
                         'icon' => 'bi bi-info-square',
                         'title' => 'Intranet',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                 ]
@@ -42,25 +42,25 @@ class SidebarController extends PlatformController
                     'customers' => [
                         'icon' => 'bi bi-people',
                         'title' => 'Ügyféllista',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'products' => [
                         'icon' => 'bi bi-box-seam',
                         'title' => 'Hírlevél',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'form' => [
                         'icon' => 'bi bi-cart4',
                         'title' => 'Űrlapok',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'automatics' => [
                         'icon' => 'bi bi-file-earmark-text',
                         'title' => 'Automatizmusok',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                 ]
@@ -73,7 +73,7 @@ class SidebarController extends PlatformController
                     'task' => [
                         'icon' => 'bi bi-list-task',
                         'title' => 'Feladatkezelő',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                 ]
@@ -86,31 +86,31 @@ class SidebarController extends PlatformController
                     'domain' => [
                         'icon' => 'bi bi-link-45deg',
                         'title' => 'Domain',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => 'admin_v1_domains',
                         'children' => []
                     ],
                     'website' => [
                         'icon' => 'bi bi-globe',
                         'title' => 'Honlap',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'webshop' => [
                         'icon' => 'bi bi-cart',
                         'title' => 'Webshop',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'webapp' => [
                         'icon' => 'bi bi-window',
                         'title' => 'Webalkalmazás',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'mobilapp' => [
                         'icon' => 'bi bi-phone',
                         'title' => 'Mobil alkalmazás',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                 ]
@@ -123,37 +123,37 @@ class SidebarController extends PlatformController
                     'domain' => [
                         'icon' => 'bi bi-shop',
                         'title' => 'Termékek',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'website' => [
                         'icon' => 'bi bi-bag-x',
                         'title' => 'Elhagyott kosarak',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'webshop' => [
                         'icon' => 'bi bi-basket',
                         'title' => 'Vásárlások',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'payment' => [
                         'icon' => 'bi bi-credit-card',
                         'title' => 'Fizetési módok',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'shipping' => [
                         'icon' => 'bi bi-truck',
                         'title' => 'Szállítási módok',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'analytics' => [
                         'icon' => 'bi bi-bar-chart',
                         'title' => 'Analitika',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                 ]
@@ -166,19 +166,19 @@ class SidebarController extends PlatformController
                     'storage' => [
                         'icon' => 'bi bi-hdd',
                         'title' => 'Tárhely',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'link' => [
                         'icon' => 'bi bi-link-45deg',
                         'title' => 'Link rövidítés',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                     'exportimport' => [
                         'icon' => 'bi bi-arrow-down-up',
                         'title' => 'Export/import',
-                        'route' => 'admin_v1_dashboard',
+                        'route' => '',
                         'children' => []
                     ],
                 ]
