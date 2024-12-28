@@ -20,6 +20,10 @@ class BackendController extends PlatformController
     #[Route('/{_locale}/admin/v1/dashboard', name: 'admin_v1_dashboard')]
     public function index(): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('login');
+        }
+
         $instance = $this->getUser()->getInstances()->first();
         $services = (new ServiceRepository($this->doctrine))->findBy(['instance' => $instance]);
 
