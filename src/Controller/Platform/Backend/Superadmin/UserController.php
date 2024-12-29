@@ -34,6 +34,7 @@ class UserController extends PlatformController
                 'phone' => 'Telefon',
                 'email' => 'E-mail',
                 'status' => 'Státusz',
+                'roles' => 'Szerepkörök',
                 'lastLogin' => 'Utolsó belépés',
                 'lastActivation' => 'Utolsó aktivitás',
             ],

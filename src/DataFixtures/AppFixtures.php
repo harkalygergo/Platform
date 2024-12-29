@@ -53,6 +53,7 @@ class AppFixtures extends Fixture
             $user->setNickName($data['nick_name']);
             $user->setPassword(password_hash($data['email'], PASSWORD_DEFAULT));
             $user->setBirthName($data['birth_name']);
+            $user->addRole($data['role']);
 
             if ($data['birth_date']) {
                 $user->setBirthdate(new \DateTimeImmutable($data['birth_date']));

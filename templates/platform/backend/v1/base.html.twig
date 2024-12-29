@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {% if title is defined %}
+        {{ title }} | PLATFORM
+    {% endif %}
+{% endblock %}
+
 {% block head %}
     <style>
         body {
@@ -205,7 +211,7 @@
                         <span class="d-none d-sm-inline-block">{{ app.user.fullName }}<br><small class="text-white-50 float-start">{{ app.user.position }}</small></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" data-bs-theme="dark">
-                        <li><a class="dropdown-item text-white-50" href="#"><i class="bi bi-person"></i> Profil és beállítások</a></li>
+                        <li><a class="dropdown-item" href="{{ path('admin_v1_account_edit') }}"><i class="bi bi-person"></i> Profil és beállítások</a></li>
                         <li><a class="dropdown-item text-white-50" href="#"><i class="bi bi-usb-drive"></i> Személyes tárhely</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ path('admin_v1_instances') }}"><i class="bi bi-briefcase"></i> Vállalkozások és szervezetek</a></li>

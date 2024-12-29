@@ -36,6 +36,7 @@ class ServiceDomainController extends PlatformController
                 'fee' => 'Díj',
                 'currency' => 'Pénznem',
                 'type' => 'Típus',
+                'status' => 'Státusz',
             ],
             'tableBody' => $services,
             'actions' => [
