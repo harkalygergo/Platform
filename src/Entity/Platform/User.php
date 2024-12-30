@@ -5,6 +5,7 @@ namespace App\Entity\Platform;
 use App\Repository\Platform\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -38,7 +39,7 @@ class User implements UserInterface
     #[ORM\Column(length: 128, nullable: true)]
     private ?string $nickName = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $password = null;
 
     #[ORM\Column(length: 128, nullable: true)]

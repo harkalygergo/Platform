@@ -6,6 +6,7 @@ action:
     cancel: megszakítás
     create: létrehozás
     update: frissítés
+    updated: frissítve
     back: vissza
     remove: eltávolítás
 data:

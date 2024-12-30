@@ -17,6 +17,7 @@ class LoginController extends PlatformController
     #[Route('/administrator', name: 'honeypot_administrator')]
     #[Route('/login', name: 'honeypot_login')]
     #[Route('/register', name: 'honeypot_register')]
+    #[Route('/{_locale}', name: 'locale')]
     #[Route('/{_locale}/admin', name: 'locale_admin')]
     public function honeypot(): Response
     {

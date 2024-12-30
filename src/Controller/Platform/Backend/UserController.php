@@ -35,7 +35,7 @@ class UserController extends PlatformController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            $this->addFlash('success', 'updated');
+            $this->addFlash('success', $this->translator->trans('action.updated'));
 
             return $this->redirectToRoute('admin_v1_account_edit', [], Response::HTTP_SEE_OTHER);
         }

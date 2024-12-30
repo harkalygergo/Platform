@@ -6,6 +6,7 @@ action:
     cancel: cancel
     create: create
     update: update
+    updated: updated
     back: back
     remove: remove
 data:

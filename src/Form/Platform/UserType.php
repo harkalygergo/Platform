@@ -42,11 +42,6 @@ class UserType extends AbstractType
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('password', PasswordType::class, [
-                'label' => 'Password',
-                'required' => false,
-                'attr' => ['class' => 'form-control'],
-            ])
             ->add('birthName', TextType::class, [
                 'label' => 'Birth name',
                 'required' => false,
@@ -71,10 +66,6 @@ class UserType extends AbstractType
                 'label' => 'Email',
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
-            ])
-            ->add('password', HiddenType::class, [
-                'required' => false,
-                'data' => $options['data']->getEmail(),
             ])
         ;
     }
