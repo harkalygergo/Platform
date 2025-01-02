@@ -1,10 +1,10 @@
 # Platform
-###### Version: 2024.12.31.1
+###### Version: 2025.01.02.1
 
 Platform is a multisite and multilingual compatibility Management System based on Symfony PHP Framework. It's ideal for managing and growing any organization. Free and open-source and always will be.
 
 
-![PLATFORM dashboard](/_docs/platform-dashboard.jpg?raw=true "PLATFORM dashboard")
+![PLATFORM dashboard](/_platform/documentation/platform-dashboard.jpg?raw=true "PLATFORM dashboard")
 
 ---
 
@@ -42,7 +42,7 @@ php bin/console cache:clear;
 One line command for local development deploy:
 
 ```bash
-composer update; npm update; composer dump-autoload -o; php bin/console cache:pool:clear --all; php bin/console doctrine:migrations:diff; php bin/console doctrine:schema:validate;
+composer update; npm update; composer dump-autoload -o; php bin/console cache:pool:clear --all; php bin/console cache:clear; php bin/console doctrine:migrations:diff; php bin/console doctrine:schema:validate;
 ```
 
 ### Developer Book

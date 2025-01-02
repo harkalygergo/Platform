@@ -417,4 +417,9 @@ class User implements UserInterface
     {
         return $this->namePrefix . ' ' . $this->lastName . ' ' . $this->middleName . ' ' . $this->firstName;
     }
+
+    public function __toString(): string
+    {
+        return $this->getFullName(); // or any other property you want to use as a string representation
+    }
 }

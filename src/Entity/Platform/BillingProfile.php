@@ -191,4 +191,9 @@ class BillingProfile
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->getName(); // or any other property you want to use as a string representation
+    }
 }
