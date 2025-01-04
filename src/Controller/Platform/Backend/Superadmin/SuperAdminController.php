@@ -24,7 +24,7 @@ class SuperAdminController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu('superadmin'),
             'title' => 'Felhasználók',
             'tableHead' => [
                 'namePrefix' => 'Előtag',
@@ -57,7 +57,7 @@ class SuperAdminController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu('superadmin'),
             'title' => 'Számlázási fiókok',
             'tableHead' => [
                 'name' => 'Név',
@@ -86,7 +86,7 @@ class SuperAdminController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu('superadmin'),
             'title' => 'Rendelések',
             'tableHead' => [
                 'createdBy' => 'Felhasználó',

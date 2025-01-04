@@ -167,5 +167,38 @@
                 }
             }
         }
+    },
+    "superadmin": {
+        "dashboard": {
+            "icon": "bi bi-speedometer2",
+            "title": "aside.dashboard",
+            "route": "admin_v1_dashboard"
+        },
+        "superadmin": {
+            "icon": "bi bi-gear",
+            "title": "Superadmin",
+            "route": "",
+            "children": {
+                "superadmin_users": {
+                    "icon": "bi bi-people",
+                    "title": "Felhasználók",
+                    "route": "admin_v1_superadmin_users",
+                    "children": []
+                },
+                "superadmin_billing_profiles": {
+                    "icon": "bi bi-receipt",
+                    "title": "Számlázási fiókok",
+                    "route": "admin_v1_superadmin_billing_profiles",
+                    "children": []
+                },
+                "superadmin_orders": {
+                    "icon": "bi bi-cart",
+                    "title": "Rendelések",
+                    "route": "admin_v1_superadmin_orders",
+                    "children": []
+                }
+            }
+        }
+
     }
 }
