@@ -15,10 +15,10 @@
 
                     {% if sidebarMenuValue['route'] is defined and sidebarMenuValue['children'] is not defined %}
                         <a href="{{ path(sidebarMenuValue['route']) }}" class="text-white text-decoration-none">
-                            {{ sidebarMenuValue['title'] }}
+                            {{ sidebarMenuValue['title']|trans }}
                         </a>
                     {% else %}
-                        {{ sidebarMenuValue['title'] }}
+                        {{ sidebarMenuValue['title']|trans }}
                     {% endif %}
                 </h6>
                 {% if sidebarMenuValue['children'] is defined and sidebarMenuValue['children'] is not empty %}

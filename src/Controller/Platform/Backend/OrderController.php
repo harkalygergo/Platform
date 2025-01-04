@@ -29,7 +29,7 @@ class OrderController extends PlatformController
         $orders = $this->doctrine->getRepository(Order::class)->findAll();
 
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Rendelések',
             'tableHead' => [
                 'createdAt' => 'Rendelés dátuma',
@@ -56,7 +56,7 @@ class OrderController extends PlatformController
         $order = $this->doctrine->getRepository(Order::class)->find($id);
 
         return $this->render('platform/backend/v1/view.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Rendelés megtekintése',
             'order' => $order,
         ]);
@@ -68,7 +68,7 @@ class OrderController extends PlatformController
         $order = $this->doctrine->getRepository(Order::class)->find($id);
 
         return $this->render('platform/backend/v1/edit.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Rendelés szerkesztése',
             'order' => $order,
         ]);
@@ -80,7 +80,7 @@ class OrderController extends PlatformController
         $order = $this->doctrine->getRepository(Order::class)->find($id);
 
         return $this->render('platform/backend/v1/delete.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Rendelés törlése',
             'order' => $order,
         ]);

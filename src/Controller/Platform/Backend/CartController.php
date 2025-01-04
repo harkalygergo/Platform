@@ -33,7 +33,7 @@ class CartController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Kosár',
             'cart' => $cart,
 

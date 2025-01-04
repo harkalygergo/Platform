@@ -7,21 +7,22 @@ use App\Repository\Platform\ServiceRepository;
 use App\Repository\Platform\UserRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class BackendController extends PlatformController
 {
-    public function __construct(RequestStack $requestStack, \Doctrine\Persistence\ManagerRegistry $doctrine, TranslatorInterface $translator)
+    public function __construct(RequestStack $requestStack, \Doctrine\Persistence\ManagerRegistry $doctrine, TranslatorInterface $translator, KernelInterface $kernel)
     {
-        parent::__construct($requestStack, $doctrine, $translator);
+        parent::__construct($requestStack, $doctrine, $translator, $kernel);
     }
 
     #[Route('/{_locale}/admin/v1/access-denied', name: 'admin_v1_access-denied')]
     public function accessDenied(): Response
     {
         return $this->render('platform/backend/v1/access-denied.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Hozzáférés megtagadva',
         ]);
     }
@@ -38,7 +39,7 @@ class BackendController extends PlatformController
         $services = (new ServiceRepository($this->doctrine))->findBy(['instance' => $instance]);
 
         return $this->render('platform/backend/v1/dashboard.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Szolgáltatások',
             'tableHead' => [
                 'name' => 'Megnevezés',
@@ -64,7 +65,7 @@ class BackendController extends PlatformController
     public function users(): Response
     {
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => $this->translator->trans('aside.users'),
             'tableHead' => [
                 'lastName' => 'Vezetéknév',

@@ -19,7 +19,7 @@ class BillingProfileController extends PlatformController
         $billingProfiles = $this->doctrine->getRepository(BillingProfile::class)->findByUserInstances($instances);
 
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Számlázási profilok',
             'tableHead' => [
                 'name' => 'Név',
@@ -52,7 +52,7 @@ class BillingProfileController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/form.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Számlázási profil hozzáadása',
             'form' => $form->createView(),
         ]);
@@ -73,7 +73,7 @@ class BillingProfileController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/form.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Számlázási profil szerkesztése',
             'form' => $form->createView(),
         ]);

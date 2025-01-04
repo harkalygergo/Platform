@@ -53,7 +53,7 @@ class CheckoutController extends PlatformController
 
 
         return $this->render('platform/backend/v1/checkout.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Pénztár',
             'tableHead' => [
                 'name' => 'Megnevezés',

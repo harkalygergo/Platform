@@ -17,7 +17,7 @@ class InstanceController extends PlatformController
         $instances = $user->getInstances();
 
         return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Instances',
             'tableHead' => [
                 'name' => 'Name',
@@ -48,7 +48,7 @@ class InstanceController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/form.html.twig', [
-            'sidebarMenu' => (new SidebarController($this->requestStack, $this->doctrine, $this->translator))->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'title' => 'Add instance',
             'form' => $form->createView(),
         ]);

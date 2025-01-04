@@ -2,16 +2,20 @@
 
 namespace App\Controller\Platform;
 
+use App\Controller\Platform\Backend\SidebarController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PlatformController extends AbstractController
 {
+    protected ?SidebarController $sidebarController = null;
     public function __construct(
         protected RequestStack $requestStack,
         protected \Doctrine\Persistence\ManagerRegistry $doctrine,
-        protected TranslatorInterface $translator
+        protected TranslatorInterface $translator,
+        protected KernelInterface $kernel
     ) {
     }
 
@@ -27,5 +31,14 @@ class PlatformController extends AbstractController
             'ip'            => $this->requestStack->getCurrentRequest()->getClientIp(),
             'userAgent'     => $this->requestStack->getCurrentRequest()->headers->get('User-Agent'),
         ];
+    }
+
+    public function getSidebarController(): SidebarController
+    {
+        if (!$this->sidebarController) {
+            $this->sidebarController = new SidebarController($this->requestStack, $this->doctrine, $this->translator, $this->kernel);
+        }
+
+        return $this->sidebarController;
     }
 }
