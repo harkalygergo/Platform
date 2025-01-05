@@ -32,7 +32,7 @@
                 "products": {
                     "icon": "bi bi-box-seam",
                     "title": "Hírlevél",
-                    "route": "",
+                    "route": "admin_v1_newsletter",
                     "children": []
                 },
                 "form": {

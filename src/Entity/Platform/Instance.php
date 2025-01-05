@@ -54,6 +54,9 @@ class Instance
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'instance')]
     private Collection $orders;
 
+    #[ORM\OneToMany(targetEntity: Newsletter::class, mappedBy: 'instance')]
+    private Collection $newsletters;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -61,6 +64,7 @@ class Instance
         $this->services = new ArrayCollection();
         $this->billingProfiles = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->newsletters = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -257,5 +261,37 @@ class Instance
         }
 
         return $this;
+    }
+
+    public function getNewsletters(): Collection
+    {
+        return $this->newsletters;
+    }
+
+    public function addNewsletter(Newsletter $newsletter): self
+    {
+        if (!$this->newsletters->contains($newsletter)) {
+            $this->newsletters->add($newsletter);
+            $newsletter->setInstance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNewsletter(Newsletter $newsletter): self
+    {
+        if ($this->newsletters->removeElement($newsletter)) {
+            // set the owning side to null (unless already changed)
+            if ($newsletter->getInstance() === $this) {
+                $newsletter->setInstance(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }
