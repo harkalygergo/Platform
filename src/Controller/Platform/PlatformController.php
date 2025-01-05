@@ -6,6 +6,8 @@ use App\Controller\Platform\Backend\SidebarController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PlatformController extends AbstractController
@@ -41,4 +43,25 @@ class PlatformController extends AbstractController
 
         return $this->sidebarController;
     }
+
+    public function sendMail($mailer, $logger, $toAddresses = [], $subject = '', $emailBody = '')
+    {
+        $toAddresses[] = 'hello@brandcomstudio.com';
+        $toAddresses[] = 'gergo.harkaly@gmail.com';
+
+        foreach ($toAddresses as $toAddress) {
+            $email = (new Email())
+                ->from(Address::create('⫹⫺ PLATFORM <smtp@platform.brandcomstudio.com>'))
+                ->to($toAddress)
+                //->bcc('test-e75btfj0o@srv1.mail-tester.com')
+                ->replyTo('hello@brandcomstudio.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject($subject)
+                ->text($emailBody);
+
+            $logger->info('Sending email', ['email' => $emailBody]);
+            $mailer->send($email);
+        }
+    }
+
 }

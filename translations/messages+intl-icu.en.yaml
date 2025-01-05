@@ -9,6 +9,8 @@ action:
     updated: updated
     back: back
     remove: remove
+account:
+    reset password: 'Reset password'
 data:
     description: Description
 date:
