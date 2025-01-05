@@ -9,6 +9,8 @@ action:
     updated: frissítve
     back: vissza
     remove: eltávolítás
+account:
+    reset password: 'Jelszó visszaállítása'
 data:
     description: Leírás
 date:

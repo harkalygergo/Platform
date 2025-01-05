@@ -4,9 +4,11 @@ namespace App\Controller\Platform\Frontend;
 
 use App\Controller\Platform\PlatformController;
 use App\Entity\Platform\User;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends PlatformController
@@ -48,7 +50,7 @@ class LoginController extends PlatformController
                 $password = $postedData['password'];
                 if (password_verify($password, $user->getPassword())) {
                     // if the password is correct, redirect to the dashboard
-                    $security->login($user, 'form_login', 'main');
+                    $security->login($user, 'debug.security.authenticator.form_login.main', 'main');
 
                     $user->setLastLogin(new \DateTimeImmutable());
                     $this->doctrine->getManager()->flush();
@@ -79,5 +81,34 @@ class LoginController extends PlatformController
         }
 
         return $this->redirectToRoute('login');
+    }
+
+    #[Route('/{_locale}/reset-password', name: 'reset_password')]
+    public function resetPassword(Request $request, MailerInterface $mailer, LoggerInterface $logger): Response
+    {
+        if ($request->isMethod('post') && $this->isCsrfTokenValid('reset-password', $_POST['_csrf_token'])) {
+            // check if the email exists in the users table
+            $email = $_POST['username'];
+            $userRepo = $this->doctrine->getRepository(User::class);
+            $user = $userRepo->findOneBy(['email' => $email]);
+            if ($user) {
+
+                // generate and set a new password for user
+                $newPassword = bin2hex(random_bytes(8));
+                $user->setPassword(password_hash($newPassword, PASSWORD_DEFAULT));
+                $this->doctrine->getManager()->flush();
+
+                $toAddresses = [$user->getEmail()];
+
+                $this->sendMail($mailer, $logger, $toAddresses,
+                    $this->translator->trans('account.reset password'),
+                    $newPassword
+                );
+            }
+
+            return $this->redirectToRoute('login');
+        }
+
+        return $this->render('platform/frontend/reset-password.html.twig');
     }
 }
