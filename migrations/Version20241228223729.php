@@ -16,6 +16,7 @@ final class Version20241228223729 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
+        /*
         // Add your SQL here
         $this->addSql('
             CREATE TRIGGER set_default_role_empty
@@ -27,11 +28,14 @@ final class Version20241228223729 extends AbstractMigration
                 END IF;
             END;
         ');
+        */
     }
 
     public function down(Schema $schema): void
     {
+        /*
         // Drop the trigger if you need to rollback the migration
         $this->addSql('DROP TRIGGER IF EXISTS set_default_role_empty');
+        */
     }
 }
