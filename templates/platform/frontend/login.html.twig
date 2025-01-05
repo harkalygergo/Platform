@@ -3,10 +3,10 @@
 {% block body %}
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card shadow-lg bg-dark text-white" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
+                    <div class="card shadow-lg bg-dark text-white">
+                        <div class="card-body p-lg-5 text-center">
 
                             <div class="mb-md-5">
 
@@ -19,22 +19,22 @@
                                                 <label for="form_username" class="required">Azonosító</label>
                                                 <input type="text" id="form_username" name="username" required="required" class="form-control form-control-lg bg-dark text-white" />
                                             </div>
-                                            <div>
+                                            <div class="py-1">
                                                 <label for="form_password" class="required">Jelszó</label>
                                                 <input type="password" id="form_password" name="password" required="required" class="form-control form-control-lg bg-dark text-white" />
                                             </div>
-                                            <div>
+                                            <div class="py-1">
                                                 <label for="form_language" class="required">Nyelv</label>
                                                 <select id="form_language" name="form[language]" class="form-control form-control-lg bg-dark text-white">
                                                     <option value="en">english</option>
                                                     <option value="hu" selected="selected">magyar</option>
                                                 </select>
                                             </div>
-                                            <div>
-                                                <label for="form__remember_me">Maradjak bejelentkezve</label>
+                                            <div class="py-1">
                                                 <input type="checkbox" id="form__remember_me" name="_remember_me" class="form-check-input bg-dark text-white" value="1" />
+                                                <label for="form__remember_me">Maradjak bejelentkezve</label>
                                             </div>
-                                            <div>
+                                            <div class="py-1 d-grid gap-2">
                                                 <button type="submit" id="form_submit" name="submit" class="btn btn-outline-light btn-lg px-5 my-3">
                                                     Bejelentkezés
                                                 </button>
