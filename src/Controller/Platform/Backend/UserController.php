@@ -42,7 +42,7 @@ class UserController extends PlatformController
         }
 
         return $this->render('platform/backend/v1/form.html.twig', [
-            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu('profile'),
             'title' => 'Saját adataim szerkesztése',
             'form' => $form->createView(),
         ]);
