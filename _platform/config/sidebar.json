@@ -168,6 +168,181 @@
             }
         }
     },
+    "profile": {
+        "dashboard": {
+            "icon": "bi bi-speedometer2",
+            "title": "aside.dashboard",
+            "route": "admin_v1_dashboard"
+        },
+        "profile": {
+            "icon": "",
+            "title": "Személyes",
+            "route": "",
+            "children": {
+                "profile_notifications": {
+                    "icon": "bi bi-bell",
+                    "title": "Értesítések",
+                    "route": "",
+                    "children": []
+                },
+                "profile_calendar": {
+                    "icon": "bi bi-calendar",
+                    "title": "Naptárbejegyzések",
+                    "route": "",
+                    "children": []
+                },
+                "profile_system_message": {
+                    "icon": "bi bi-envelope-arrow-up",
+                    "title": "Rendszerüzenetek",
+                    "route": "",
+                    "children": []
+                },
+                "profile_note": {
+                    "icon": "bi bi-card-text",
+                    "title": "Jegyzetek",
+                    "route": "",
+                    "children": []
+                },
+                "profile_storage": {
+                    "icon": "bi bi-hdd",
+                    "title": "Személyes tárhely",
+                    "route": "",
+                    "children": []
+                },
+                "profile_worksheet": {
+                    "icon": "bi bi-alarm",
+                    "title": "Munkaidő-nyilvántartás",
+                    "route": "",
+                    "children": []
+                }
+            }
+        },
+        "settings": {
+            "icon": "",
+            "title": "Beállítások",
+            "route": "",
+            "children": {
+                "profile_notifications": {
+                    "icon": "bi bi-person",
+                    "title": "Profil szerkesztése",
+                    "route": "admin_v1_account_edit",
+                    "children": []
+                },
+                "profile_calendar": {
+                    "icon": "bi bi-telephone",
+                    "title": "Elérhetőségek szerkesztése",
+                    "route": "",
+                    "children": []
+                },
+                "profile_system_message": {
+                    "icon": "bi bi-lock",
+                    "title": "Jelszó módosítása",
+                    "route": "",
+                    "children": []
+                },
+                "profile_note": {
+                    "icon": "bi bi-envelope",
+                    "title": "Szinkronizált e-mail fiókok",
+                    "route": "",
+                    "children": []
+                },
+                "profile_storage": {
+                    "icon": "bi bi-calendar",
+                    "title": "Szinkronizált naptárak",
+                    "route": "",
+                    "children": []
+                }
+            }
+        },
+        "billing": {
+            "icon": "",
+            "title": "Számlázás",
+            "route": "",
+            "children": {
+                "profile_billing": {
+                    "icon": "bi bi-plugin",
+                    "title": "Szolgáltatások",
+                    "route": "",
+                    "children": []
+                },
+                "profile_calendar": {
+                    "icon": "bi bi-receipt",
+                    "title": "Számlázási profilok",
+                    "route": "admin_v1_billing_profiles",
+                    "children": []
+                },
+                "profile_system_message": {
+                    "icon": "bi bi-files",
+                    "title": "Számlák",
+                    "route": "",
+                    "children": []
+                }
+            }
+        }
+    },
+    "system": {
+        "dashboard": {
+            "icon": "bi bi-speedometer2",
+            "title": "aside.dashboard",
+            "route": "admin_v1_dashboard"
+        },
+        "system": {
+            "icon": "",
+            "title": "Rendszer",
+            "route": "",
+            "children": {
+                "system_settings": {
+                    "icon": "bi bi-gear",
+                    "title": "Rendszerbeállítások",
+                    "route": "",
+                    "children": []
+                },
+                "system_users": {
+                    "icon": "bi bi-people",
+                    "title": "Felhasználók",
+                    "route": "",
+                    "children": []
+                },
+                "system_log": {
+                    "icon": "bi bi-journal-text",
+                    "title": "Tevékenységnapló",
+                    "route": "",
+                    "children": []
+                }
+            }
+        },
+        "support": {
+            "icon": "",
+            "title": "Támogatás",
+            "route": "",
+            "children": {
+                "support_help": {
+                    "icon": "bi bi-question-circle",
+                    "title": "Súgó",
+                    "route": "",
+                    "children": []
+                },
+                "support_ticket": {
+                    "icon": "bi bi-bug",
+                    "title": "Hibajegy",
+                    "route": "",
+                    "children": []
+                },
+                "support_log": {
+                    "icon": "bi bi-person-badge",
+                    "title": "Felhasználói dokumentáció",
+                    "route": "",
+                    "children": []
+                },
+                "support_codebook": {
+                    "icon": "bi bi-file-code",
+                    "title": "Fejlesztői specifikáció",
+                    "route": "",
+                    "children": []
+                }
+            }
+        }
+    },
     "superadmin": {
         "dashboard": {
             "icon": "bi bi-speedometer2",
@@ -199,6 +374,5 @@
                 }
             }
         }
-
     }
 }
