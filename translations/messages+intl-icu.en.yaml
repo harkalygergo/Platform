@@ -10,9 +10,12 @@ action:
     back: back
     remove: remove
 account:
+    change password: 'Password change'
     reset password: 'Reset password'
 data:
     description: Description
+event:
+    saved successfully: 'Saved successfully'
 date:
     createdAt: 'Created'
     description: Description

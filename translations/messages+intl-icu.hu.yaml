@@ -10,12 +10,15 @@ action:
     back: vissza
     remove: eltávolítás
 account:
+    change password: 'Jelszó módosítása'
     reset password: 'Jelszó visszaállítása'
 data:
     description: Leírás
 date:
     createdAt: 'Létrehozva'
     updatedAt: 'Frissítve'
+event:
+    saved successfully: 'Sikeres mentés.'
 payment:
     annual: éves
 aside:

@@ -237,7 +237,7 @@
                 "profile_system_message": {
                     "icon": "bi bi-lock",
                     "title": "Jelszó módosítása",
-                    "route": "",
+                    "route": "admin_v1_account_password_change",
                     "children": []
                 },
                 "profile_note": {
