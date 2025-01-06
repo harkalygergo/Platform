@@ -94,10 +94,12 @@
                                                 <i class="bi bi-trash"></i> <span class="d-none d-sm-inline-block">{{ 'action.delete'|trans }}</span>
                                             </a>
                                         {% endif %}
+                                        {% if 'cart' in actions %}
+                                            <a class="btn btn-sm btn-success" title="" href="{{ path('admin_v1_cart_add', {"id": td.id }) }}">
+                                                <i class="bi bi-cart"></i> <span class="d-none d-sm-inline-block">kosárba</span>
+                                            </a>
+                                        {% endif %}
                                     {% endif %}
-                                    <a class="btn btn-sm btn-success" title="" href="{{ path('admin_v1_cart_add', {"id": td.id }) }}">
-                                        <i class="bi bi-cart"></i> <span class="d-none d-sm-inline-block">kosárba</span>
-                                    </a>
                                 </td>
                             </tr>
                         {% endfor %}

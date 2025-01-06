@@ -2,7 +2,6 @@ name: GitHub workflow
 
 # Controls when the workflow will run
 on:
-    # Triggers the workflow on push or pull request events but only for the "develop" branch
     push:
         branches: [ "main" ]
     pull_request:
@@ -25,7 +24,7 @@ jobs:
                 with:
                     #ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
                     host: ${{ vars.HOST }}
-                    username: ${{ vars.USER }}
+                    username: ${{ vars.SSHUSER }}
                     password: ${{ secrets.PASSWORD }}
                     port: 22
                     script: |
@@ -34,11 +33,15 @@ jobs:
                         git checkout -- composer.lock
                         git checkout -- package-lock.json
                         git pull
+                        chown -R ${{ vars.USER }}:www-data ./*
+                        chown -R ${{ vars.USER }}:www-data ./.[^.]*
                         composer update
                         npm update
                         composer dump-autoload -o
                         php bin/console cache:pool:clear --all
                         php bin/console cache:clear
+                        chown -R ${{ vars.USER }}:www-data ./*
+                        chown -R ${{ vars.USER }}:www-data ./.[^.]*
                         php bin/console doctrine:migrations:migrate --no-interaction --verbose
                         php bin/console doctrine:migrations:diff --no-interaction
                         git status

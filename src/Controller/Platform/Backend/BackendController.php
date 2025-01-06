@@ -56,9 +56,7 @@ class BackendController extends PlatformController
             //'tableBody' => (new ServiceRepository($this->doctrine))->findAll(),
             'tableBody' => $services,
             'actions' => [
-                'view',
-                'edit',
-                'delete',
+                'cart',
             ],
         ]);
     }
