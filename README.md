@@ -1,5 +1,5 @@
 # Platform
-###### Version: 2025.01.06.7
+###### Version: 2025.01.09.1
 
 Platform is a multisite and multilingual compatibility Management System based on Symfony PHP Framework. It's ideal for managing and growing any organization. Free and open-source and always will be.
 

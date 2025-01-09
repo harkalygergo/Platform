@@ -1,3 +1,5 @@
+global:
+    status: Státusz
 action:
     view: megtekintés
     edit: szerkesztés
@@ -21,6 +23,10 @@ event:
     saved successfully: 'Sikeres mentés.'
 payment:
     annual: éves
+user:
+    firstName: 'Keresztnév'
+    lastName: 'Vezetéknév'
+    phone: 'Telefonszám'
 aside:
     dashboard: 'Vezérlőpult'
     favourites: 'Kedvencek'
