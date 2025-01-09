@@ -5,6 +5,7 @@ namespace App\Controller\Platform\Backend;
 use App\Controller\Platform\PlatformController;
 use App\Repository\Platform\ServiceRepository;
 use App\Repository\Platform\UserRepository;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -18,6 +19,26 @@ class BackendController extends PlatformController
         parent::__construct($requestStack, $doctrine, $translator, $kernel);
     }
 
+    protected function init(): ?RedirectResponse
+    {
+        // if user is not logged in, redirect to login
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('login');
+        }
+
+        $this->setUserLastActivation();
+
+        return null;
+    }
+
+    private function setUserLastActivation(): void
+    {
+        $user = $this->getUser();
+        $user->setLastActivation(new \DateTimeImmutable());
+        $this->doctrine->getManager()->persist($user);
+        $this->doctrine->getManager()->flush();
+    }
+
     #[Route('/{_locale}/admin/v1/access-denied', name: 'admin_v1_access-denied')]
     public function accessDenied(): Response
     {
@@ -27,10 +48,11 @@ class BackendController extends PlatformController
         ]);
     }
 
-
     #[Route('/{_locale}/admin/v1/dashboard', name: 'admin_v1_dashboard')]
     public function index(): Response
     {
+        $this->init();
+
         if (!$this->getUser()) {
             return $this->redirectToRoute('login');
         }
@@ -58,23 +80,6 @@ class BackendController extends PlatformController
             'actions' => [
                 'cart',
             ],
-        ]);
-    }
-
-    #[Route('/{_locale}/admin/v1/users', name: 'admin_v1_users')]
-    public function users(): Response
-    {
-        return $this->render('platform/backend/v1/list.html.twig', [
-            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
-            'title' => $this->translator->trans('aside.users'),
-            'tableHead' => [
-                'lastName' => 'Vezetéknév',
-                'firstName' => 'Keresztnév',
-                'phone' => 'Telefonszám',
-                'email' => 'E-mail cím',
-                'status' => 'Státusz',
-            ],
-            'tableBody' => (new UserRepository($this->doctrine))->findAll()
         ]);
     }
 }

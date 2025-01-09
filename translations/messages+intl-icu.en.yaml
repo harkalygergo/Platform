@@ -1,3 +1,5 @@
+global:
+    status: Status
 action:
     view: view
     edit: edit
@@ -22,6 +24,10 @@ date:
     updatedAt: 'Updated'
 payment:
     yearly: yearly
+user:
+    firstName: 'First name'
+    lastName: 'Last name'
+    phone: 'Phone'
 aside:
     dashboard: 'Dashboard'
     favourites: 'Favorites'
