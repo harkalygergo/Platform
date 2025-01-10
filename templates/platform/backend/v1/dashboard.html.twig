@@ -35,11 +35,11 @@
                                         {{ domainCount }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Honlap, webshop:</td>
+                                    <td>Honlap:</td>
                                     <td class="fw-bold">?</td>
                                 </tr>
                                 <tr>
-                                    <td>Webáruház:</td>
+                                    <td>Webshop:</td>
                                     <td class="fw-bold">?</td>
                                 </tr>
                                 <tr>
@@ -170,22 +170,6 @@
                         <div>
                             {{ title }}
                         </div>
-                        <div>
-                            <div class="btn-toolbar mb-2 mb-md-0">
-                                <div class="btn-group me-2">
-                                    <button type="button" class="btn btn-sm btn-outline-success">
-                                        <i class="bi bi-plus-circle"></i> új hozzáadása
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger">
-                                        <i class="bi bi-heart"></i> kedvencekhez
-                                    </button>
-                                </div>
-                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                                    <i class="bi bi-gear"></i>
-                                    eszközök
-                                </button>
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body">
 
@@ -213,7 +197,7 @@
                                                     {{ attribute(td, thKey) ? '&#9989;' : '&#10060;' }}
                                                 {% else %}
                                                     {% set variable = attribute(td, thKey) %}
-                                                    {{ variable }}
+                                                    {{ variable|trans }}
                                                 {% endif %}
                                             </td>
                                         {% endfor %}
