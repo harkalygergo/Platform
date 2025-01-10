@@ -3,10 +3,13 @@
 namespace App\Controller\Platform\Backend;
 
 use App\Controller\Platform\PlatformController;
+use App\Entity\Platform\User;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+#[IsGranted(User::ROLE_USER)]
 class SidebarController extends PlatformController
 {
     public function __construct(

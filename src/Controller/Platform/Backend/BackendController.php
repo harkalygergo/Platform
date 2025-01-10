@@ -3,15 +3,17 @@
 namespace App\Controller\Platform\Backend;
 
 use App\Controller\Platform\PlatformController;
+use App\Entity\Platform\User;
 use App\Repository\Platform\ServiceRepository;
-use App\Repository\Platform\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+#[IsGranted(User::ROLE_USER)]
 class BackendController extends PlatformController
 {
     public function __construct(RequestStack $requestStack, \Doctrine\Persistence\ManagerRegistry $doctrine, TranslatorInterface $translator, KernelInterface $kernel)

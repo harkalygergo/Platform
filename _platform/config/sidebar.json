@@ -331,7 +331,7 @@
                 "support_log": {
                     "icon": "bi bi-person-badge",
                     "title": "Felhasználói dokumentáció",
-                    "route": "",
+                    "route": "admin_v1_support",
                     "children": []
                 },
                 "support_codebook": {

@@ -6,12 +6,14 @@ use App\Controller\Platform\PlatformController;
 use App\Entity\Platform\BillingProfile;
 use App\Entity\Platform\Cart;
 use App\Entity\Platform\Service;
-use App\Form\Platform\BillingProfileType;
+use App\Entity\Platform\User;
 use App\Repository\Platform\ServiceRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted(User::ROLE_USER)]
 class CheckoutController extends PlatformController
 {
     #[Route('/{_locale}/admin/v1/checkout', name: 'admin_v1_checkout')]
@@ -22,11 +24,9 @@ class CheckoutController extends PlatformController
             return $this->redirectToRoute('login');
         }
 
-
         $user = $this->getUser();
         $instances = $user->getInstances();
         $billingProfiles = $this->doctrine->getRepository(BillingProfile::class)->findByUserInstances($instances);
-
 
         $cart = $this->doctrine->getRepository(Cart::class)->findOneBy(['user' => $this->getUser()]);
 
@@ -47,10 +47,8 @@ class CheckoutController extends PlatformController
             }
         }
 
-
         $instance = $this->getUser()->getInstances()->first();
         $services = (new ServiceRepository($this->doctrine))->findBy(['instance' => $instance]);
-
 
         return $this->render('platform/backend/v1/checkout.html.twig', [
             'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),

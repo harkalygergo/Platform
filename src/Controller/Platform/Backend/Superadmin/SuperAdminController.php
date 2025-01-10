@@ -3,7 +3,6 @@
 namespace App\Controller\Platform\Backend\Superadmin;
 
 use App\Controller\Platform\PlatformController;
-use App\Controller\Platform\Backend\SidebarController;
 use App\Entity\Platform\User;
 use App\Repository\OrderRepository;
 use App\Repository\Platform\BillingProfileRepository;
