@@ -30,7 +30,7 @@
                     "children": []
                 },
                 "products": {
-                    "icon": "bi bi-box-seam",
+                    "icon": "bi bi-send",
                     "title": "Hírlevél",
                     "route": "admin_v1_newsletter",
                     "children": []
@@ -93,7 +93,7 @@
                 },
                 "mobilapp": {
                     "icon": "bi bi-phone",
-                    "title": "Mobil alkalmazás",
+                    "title": "Mobilalkalmazás",
                     "route": "",
                     "children": []
                 }
