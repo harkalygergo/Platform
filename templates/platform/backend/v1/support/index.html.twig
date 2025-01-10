@@ -1,0 +1,96 @@
+{% extends 'platform/backend/v1/base.html.twig' %}
+
+{% block main %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10">
+        <div class="mx-3 my-4">
+
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-header text-uppercase fw-bold">
+                        E-mail konfiguráció | IMAP
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tbody>
+                            <tr>
+                                <td>autentikáció</td>
+                                <td><strong>normál jelszó</strong></td>
+                            </tr>
+                            <tr>
+                                <td>SSL/TLS port</td>
+                                <td><strong>993</strong></td>
+                            </tr>
+                            <tr>
+                                <td>STARTTLS port</td>
+                                <td><strong>143</strong></td>
+                            </tr>
+                            <tr>
+                                <td>no encryption port</td>
+                                <td><strong>143</strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header text-uppercase fw-bold">
+                        E-mail konfiguráció | POP3
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tbody>
+                            <tr>
+                                <td>autentikáció</td>
+                                <td><strong>normál jelszó</strong></td>
+                            </tr>
+                            <tr>
+                                <td>SSL/TLS port</td>
+                                <td><strong>995</strong></td>
+                            </tr>
+                            <tr>
+                                <td>STARTTLS port</td>
+                                <td><strong>110</strong></td>
+                            </tr>
+                            <tr>
+                                <td>no encryption port</td>
+                                <td><strong>110</strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header text-uppercase fw-bold">
+                        E-mail konfiguráció | SMTP
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <tbody>
+                            <tr>
+                                <td>autentikáció</td>
+                                <td><strong>normál jelszó</strong></td>
+                            </tr>
+                            <tr>
+                                <td>SSL/TLS port</td>
+                                <td><strong>465</strong></td>
+                            </tr>
+                            <tr>
+                                <td>STARTTLS port</td>
+                                <td><strong>587</strong></td>
+                            </tr>
+                            <tr>
+                                <td>no encryption port</td>
+                                <td><strong>25</strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+{% endblock %}
