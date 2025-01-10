@@ -4,10 +4,13 @@ namespace App\Controller\Platform\Backend;
 
 use App\Controller\Platform\PlatformController;
 use App\Entity\Platform\Instance;
+use App\Entity\Platform\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted(User::ROLE_USER)]
 class InstanceController extends PlatformController
 {
     #[Route('/{_locale}/admin/v1/instances', name: 'admin_v1_instances')]

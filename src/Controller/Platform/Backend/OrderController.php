@@ -4,23 +4,18 @@ namespace App\Controller\Platform\Backend;
 
 use App\Controller\Platform\PlatformController;
 use App\Entity\Platform\BillingProfile;
-use App\Entity\Platform\Cart;
 use App\Entity\Platform\Order;
 use App\Entity\Platform\Service;
 use App\Entity\Platform\User;
-use App\Form\Platform\BillingProfileType;
-use App\Repository\Platform\ServiceRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Exception\CircularReferenceException;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Serializer\SerializerInterface;
 
+#[IsGranted(User::ROLE_USER)]
 class OrderController extends PlatformController
 {
     #[Route('/{_locale}/admin/v1/orders', name: 'admin_v1_orders')]

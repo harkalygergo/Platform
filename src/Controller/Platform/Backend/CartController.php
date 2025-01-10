@@ -6,11 +6,12 @@ use App\Controller\Platform\PlatformController;
 use App\Entity\Platform\Cart;
 use App\Entity\Platform\Service;
 use App\Entity\Platform\User;
-use App\Repository\Platform\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted(User::ROLE_USER)]
 class CartController extends PlatformController
 {
     #[Route('/{_locale}/admin/v1/cart', name: 'admin_v1_cart')]
