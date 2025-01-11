@@ -65,7 +65,7 @@
                                             {{ attribute(td, thKey).format('Y-m-d') }}
                                         {% else %}
                                             {% set variable = attribute(td, thKey) %}
-                                            {{ variable }}
+                                            {{ variable|trans }}
                                         {% endif %}
                                     </td>
                                 {% endfor %}

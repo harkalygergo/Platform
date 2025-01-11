@@ -366,6 +366,12 @@
                     "route": "admin_v1_superadmin_billing_profiles",
                     "children": []
                 },
+                "superadmin_services": {
+                    "icon": "bi bi-boxes",
+                    "title": "Szolgáltatások",
+                    "route": "admin_v1_superadmin_services",
+                    "children": []
+                },
                 "superadmin_orders": {
                     "icon": "bi bi-cart",
                     "title": "Rendelések",

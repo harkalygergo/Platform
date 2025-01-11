@@ -16,6 +16,26 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
+    public function findAllGroupedByInstance()
+    {
+        return $this->createQueryBuilder('s')
+            ->select('i.name as instanceName, s')
+            ->join('s.instance', 'i')
+            ->orderBy('i.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllOrderedByInstance()
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.instance', 'i')
+            ->orderBy('i.name', 'ASC')
+            ->addOrderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Service[] Returns an array of Service objects
     //     */
