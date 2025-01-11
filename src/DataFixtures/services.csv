@@ -2,7 +2,7 @@ instance,name,description,fee,currency,frequency_of_payment,next_payment_date,st
 demo,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,demo.platform.brandcomstudio.com,,0,HUF,payment.annual,2024-12-01,1,domain
-brandcom.,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+brandcom.,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,brandcom.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,brandcomstudio.com,,0,HUF,payment.annual,2024-12-01,1,domain
@@ -15,52 +15,53 @@ brandcom.,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgál
 ,infopedia.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,futoblog.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,sportnagykovet.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-Harkály Gergő,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Harkály Gergő,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,harkalygergo.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,harkaly.eu,,0,HUF,payment.annual,2024-12-01,1,domain
-ASK-NET,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+ASK-NET,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,ask-net.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-Vitalitásház,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Vitalitásház,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,bogacsigyogycentrum.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,vitalitashaz.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-Nagy Drótfonó,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Nagy Drótfonó,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,nagydrotfono.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-Digiműhely,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Digiműhely,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,digimuhely.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,helloled.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,beolina.hu,,3000,HUF,payment.annual,2024-12-01,1,domain
 ,freyadance.hu,,3000,HUF,payment.annual,2024-12-01,1,domain
-Mocorgó Siklós,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Mocorgó Siklós,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,mocorgo.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-Herczeg Família,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Herczeg Família,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,izuletmuhely.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-Margaréta Apartman,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Margaréta Apartman,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,margaretaapartman.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,margaretahotel.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,bogacshotel.hu,,3000,HUF,payment.annual,2024-12-01,1,domain
-Alati Autósbolt Siklós,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Alati Autósbolt Siklós,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
 ,autoalkatresz.bolt.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,tili.hu,,0,HUF,payment.annual,2024-12-01,1,domain
 ,etautosbolt.hu,,3000,HUF,payment.annual,2024-12-01,1,domain
-Hunflex,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
-,tárhely 10 GB,,0,HUF,payment.annual,2024-12-01,1,hosting
-,hollandmunkak.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-,hunflex.hu,,0,HUF,payment.annual,2024-12-01,1,domain
-,hunflex.nl,,6000,HUF,payment.annual,2024-12-01,1,domain
+Hunflex,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+,tárhely 10 GB,,0,HUF,payment.annual,2025-12-01,1,hosting
+,hollandmunkak.hu,,0,HUF,payment.annual,2025-12-01,1,domain
+,hunflex.hu,,0,HUF,payment.annual,2025-12-01,1,domain
+,hunflex.nl,,4000,HUF,payment.annual,2025-12-01,1,domain
+,flexgopersoneel.nl,,4000,HUF,payment.annual,2025-12-01,1,domain
 ,flex-go.eu,,4000,HUF,payment.annual,2024-12-01,1,domain
-,alfaflex.hu,,3000,HUF,payment.annual,2024-12-01,1,domain
-Joe Taxi,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+,alfaflex.hu,,3000,HUF,payment.annual,2024-12-01,0,domain
+Joe Taxi,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2025-12-01,1,hosting
 ,joetaxi.hu,,0,HUF,payment.annual,2025-12-01,1,domain
-Valhalla Calling,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: 2, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
+Valhalla Calling,Platform alapszolgáltatás,"Tartalmazza a platform alapvető szolgáltatásait: akár 2 domain, korlátlan aldomain, 10 GB tárhely (honlap, e-mail fiók, adatbázis), SSL tanúsítvány (https), korlátlan e-mail fiók és alias, rendszeres biztonsági mentés, folyamatos karbantartás, továbbfejlesztés, éves rendelkezésre állás technikai kérdésekben.",30000,HUF,payment.annual,2024-12-01,1,basic
 ,tárhely 10 GB,,0,HUF,payment.annual,2025-12-01,1,hosting
 ,valhallacalling.hu,,0,HUF,payment.annual,2025-12-01,1,domain

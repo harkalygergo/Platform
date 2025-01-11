@@ -77,11 +77,10 @@
                 <table>
                     <tbody>
                     <tr>
-                        <td style="width:40px;">
-                            <i class="bi bi-stack" style="font-size:32px;padding-right:4px;"></i>
+                        <td class="col" style="width:2.5rem;">
+                            <i class="bi bi-stack fs-2"></i>
                         </td>
-                        <td class="d-none d-sm-inline-block pt-1" style="font-size:12px;">
-
+                        <td class="col d-none d-sm-block pt-1" style="font-size:12px;">
                             <b class="text-uppercase p-0">
                                 Platform
                             </b>
@@ -93,8 +92,8 @@
                     </tbody>
                 </table>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="d-md-none nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list text-white fs-1"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExample02">
@@ -106,8 +105,9 @@
                     </li>
                 </ul>
 
-
-                <a class="btn text-white d-none d-sm-inline-block" href="{{ path('admin_v1_dashboard') }}"><i class="bi bi-speedometer2"></i></a>
+                <a class="btn text-white d-none d-sm-inline-block" href="{{ path('admin_v1_dashboard') }}">
+                    <i class="bi bi-speedometer2"></i>
+                </a>
 
                 <a href="{{ path('admin_v1_checkout') }}" class="btn text-white position-relative">
                     <i class="bi bi-cart"></i>

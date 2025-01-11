@@ -30,6 +30,7 @@ jobs:
                     script: |
                         cd ${{ vars.PATH }}
                         git status
+                        git diff
                         git checkout -- composer.lock
                         git checkout -- package-lock.json
                         git pull
