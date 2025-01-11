@@ -6,8 +6,6 @@ use App\Entity\Platform\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +22,7 @@ class UserType extends AbstractType
             ])
             ->add('firstName', TextType::class, [
                 'label' => 'First name',
-                'required' => false,
+                'required' => true,
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('middleName', TextType::class, [
@@ -34,7 +32,7 @@ class UserType extends AbstractType
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Last name',
-                'required' => false,
+                'required' => true,
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('nickName', TextType::class, [
@@ -64,7 +62,7 @@ class UserType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email',
-                'required' => false,
+                'required' => true,
                 'attr' => ['class' => 'form-control'],
             ])
         ;

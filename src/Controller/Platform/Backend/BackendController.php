@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted(User::ROLE_USER)]
@@ -63,9 +64,17 @@ class BackendController extends PlatformController
         $instanceUsers = $instance->getUsers();
         $services = (new ServiceRepository($this->doctrine))->findBy(['instance' => $instance]);
 
+        // get register URL for the instance
+        $domain = $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost();
+        $slugger = new AsciiSlugger();
+        $registerUrl = $domain . $this->generateUrl('register', [
+                'instanceSlug' => $slugger->slug($instance->getName())->lower(),
+                'instance' => $instance->getId()
+            ]
+        );
+
         return $this->render('platform/backend/v1/dashboard.html.twig', [
             'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
-            'instanceUsers' => $instanceUsers,
             'title' => 'Szolgáltatások',
             'tableHead' => [
                 'name' => 'Megnevezés',
@@ -82,6 +91,9 @@ class BackendController extends PlatformController
             'actions' => [
                 'cart',
             ],
+
+            'instanceUsers' => $instanceUsers,
+            'registerUrl' => $registerUrl,
         ]);
     }
 }
