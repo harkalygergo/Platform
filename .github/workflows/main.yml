@@ -28,15 +28,21 @@ jobs:
                     password: ${{ secrets.PASSWORD }}
                     port: 22
                     script: |
+                        printf "\n *** change directory to the project path *** \n"
                         cd ${{ vars.PATH }}
+                        printf "\n *** git status *** \n"
                         git status
+                        printf "\n *** git diff *** \n"
                         git diff
                         git checkout -- composer.lock
                         git checkout -- package-lock.json
+                        printf "\n *** git pull *** \n"
                         git pull
                         chown -R ${{ vars.USER }}:www-data ./*
                         chown -R ${{ vars.USER }}:www-data ./.[^.]*
+                        printf "\n *** composer update *** \n"
                         composer update
+                        printf "\n *** npm update *** \n"
                         npm update
                         composer dump-autoload -o
                         php bin/console cache:pool:clear --all
