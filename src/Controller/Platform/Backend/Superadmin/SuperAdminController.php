@@ -6,6 +6,7 @@ use App\Controller\Platform\PlatformController;
 use App\Entity\Platform\User;
 use App\Repository\OrderRepository;
 use App\Repository\Platform\BillingProfileRepository;
+use App\Repository\Platform\ServiceRepository;
 use App\Repository\Platform\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -101,4 +102,32 @@ class SuperAdminController extends PlatformController
             ],
         ]);
     }
+
+    #[Route('/{_locale}/admin/v1/superadmin/services', name: 'admin_v1_superadmin_services')]
+    public function superAdminServiceList(): Response
+    {
+        // if user is not logged in, redirect to login
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('login');
+        }
+
+        return $this->render('platform/backend/v1/list.html.twig', [
+            'sidebarMenu' => $this->getSidebarController()->getSidebarMenu('superadmin'),
+            'title' => 'Szolgáltatások',
+            'tableHead' => [
+                'instance' => 'Példány',
+                'name' => 'Név',
+                'type' => 'Típus',
+                'fee' => 'Ár',
+                'nextPaymentDate' => 'Következő fizetés dátuma',
+                'frequencyOfPayment' => 'Fizetési gyakoriság',
+                'status' => 'Státusz',
+            ],
+            'tableBody' => (new ServiceRepository($this->doctrine))->findAllOrderedByInstance(),
+            'actions' => [
+            ],
+        ]);
+    }
+
+
 }
