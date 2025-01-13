@@ -1,4 +1,5 @@
 global:
+    comment: 'Comment'
     status: Status
 action:
     view: view
@@ -26,8 +27,11 @@ date:
 payment:
     yearly: yearly
 user:
+    namePrefix: 'Name prefix'
     firstName: 'First name'
+    middleName: 'Middle name'
     lastName: 'Last name'
+    birthDate: 'Birth date'
     phone: 'Phone'
 aside:
     dashboard: 'Dashboard'
