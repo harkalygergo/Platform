@@ -7,6 +7,7 @@ action:
     save: save
     cancel: cancel
     create: create
+    created: created
     update: update
     updated: updated
     back: back
