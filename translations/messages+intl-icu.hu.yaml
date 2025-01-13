@@ -1,4 +1,5 @@
 global:
+    comment: 'Megjegyzés'
     status: Státusz
 action:
     view: megtekintés
@@ -25,8 +26,11 @@ event:
 payment:
     annual: éves
 user:
+    namePrefix: 'Név előtag'
     firstName: 'Keresztnév'
+    middleName: 'Második név'
     lastName: 'Vezetéknév'
+    birthDate: 'Születési dátum'
     phone: 'Telefonszám'
 aside:
     dashboard: 'Vezérlőpult'

@@ -20,17 +20,17 @@ class ClientController extends PlatformController
     public function index(ClientRepository $clientRepository): Response
     {
         return $this->render('platform/backend/v1/list.html.twig', [
-            'title' => 'Ügyfelek',
+            'title' => 'Ügyféllista',
             'sidebarMenu' => $this->getSidebarController()->getSidebarMenu(),
             'tableHead' => [
-                'namePrefix' => 'Előtag',
-                'lastName' => 'Vezetéknév',
-                'middleName' => 'Középső név',
-                'firstName' => 'Keresztnév',
-                'birthDate' => 'Születési dátum',
-                'phone' => 'Telefonszám',
+                'namePrefix' => $this->translator->trans('user.namePrefix'),
+                'lastName' => $this->translator->trans('user.lastName'),
+                'middleName' => $this->translator->trans('user.middleName'),
+                'firstName' => $this->translator->trans('user.firstName'),
+                'birthDate' => $this->translator->trans('user.birthDate'),
+                'phone' => $this->translator->trans('user.phone'),
                 'email' => 'E-mail',
-                'comment' => 'Megjegyzés',
+                'comment' => $this->translator->trans('global.comment'),
             ],
             'tableBody' => $clientRepository->findBy(['instance' => $this->getUser()->getInstances()->first()]),
             'actions' => [

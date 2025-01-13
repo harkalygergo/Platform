@@ -10,39 +10,47 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ClientType extends AbstractType
 {
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('namePrefix', TextType::class, [
-                'label' => 'Name prefix',
-                'required' => false,
-                'attr' => ['class' => 'form-control'],
-            ])
-            ->add('firstName', TextType::class, [
-                'label' => 'First name',
-                'required' => true,
-                'attr' => ['class' => 'form-control'],
-            ])
-            ->add('middleName', TextType::class, [
-                'label' => 'Middle name',
+                'label' => $this->translator->trans('user.namePrefix'),
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('lastName', TextType::class, [
-                'label' => 'Last name',
+                'label' => $this->translator->trans('user.lastName'),
+                'required' => true,
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('middleName', TextType::class, [
+                'label' => $this->translator->trans('user.middleName'),
+                'required' => false,
+                'attr' => ['class' => 'form-control'],
+            ])
+            ->add('firstName', TextType::class, [
+                'label' => $this->translator->trans('user.firstName'),
                 'required' => true,
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('birthDate', DateType::class, [
-                'label' => 'Birth date',
+                'label' => $this->translator->trans('user.birthDate'),
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('phone', TextType::class, [
-                'label' => 'Phone',
+                'label' => $this->translator->trans('user.phone'),
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
             ])
@@ -52,7 +60,7 @@ class ClientType extends AbstractType
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comment',
+                'label' => $this->translator->trans('global.comment'),
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
             ]);
