@@ -7,6 +7,7 @@ action:
     save: mentés
     cancel: megszakítás
     create: létrehozás
+    created: létrehozva
     update: frissítés
     updated: frissítve
     back: vissza
